@@ -6,7 +6,7 @@ import { useTimeFormat } from '../contexts/TimeFormatContext';
 import { getPrayerTimes, updatePrayerCountdowns, PrayerTime } from '../services/prayerService';
 import LocationService, { LocationData } from '../services/locationService';
 import { getCurrentIslamicDate, getUpcomingIslamicEvents } from '../services/islamicCalendarService';
-import { getDailyReminder, getCategoryColor, getCategoryIcon, DailyReminder } from '../services/dailyReminderService';
+import { getDailyReminder, getCategoryIcon, DailyReminder } from '../services/dailyReminderService';
 import ProfileAvatar from '../components/ProfileAvatar';
 import { colors } from '../utils/theme';
 import './HomeScreen.css';
@@ -14,7 +14,7 @@ import './HomeScreen.css';
 const HomeScreen: React.FC = () => {
   const navigate = useNavigate();
   const { authState } = useAuth();
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const { timeFormat, formatTimeWithSeconds } = useTimeFormat();
   const [prayerTimes, setPrayerTimes] = useState<PrayerTime[]>([]);
   const [currentLocation, setCurrentLocation] = useState<LocationData | null>(null);
@@ -32,39 +32,12 @@ const HomeScreen: React.FC = () => {
     { id: 'istanbul' as const, label: 'Istanbul', file: '/assets/audio/azan/istanbul.mp3' },
   ];
 
-  useEffect(() => {
-    loadLocationAndPrayerTimes();
-    loadDailyReminder();
-    
-    const timeInterval = setInterval(() => setCurrentTime(new Date()), 1000);
-    return () => clearInterval(timeInterval);
-  }, [timeFormat]);
-
-  useEffect(() => {
-    if (prayerTimes.length === 0) return;
-    
-    const interval = setInterval(() => {
-      setPrayerTimes(prevPrayerTimes => {
-        if (prevPrayerTimes.length > 0) {
-          return updatePrayerCountdowns(prevPrayerTimes, timeFormat);
-        }
-        return prevPrayerTimes;
-      });
-    }, 1000);
-    
-    return () => clearInterval(interval);
-  }, [prayerTimes.length, timeFormat]);
-
-  useEffect(() => {
-    return () => {
-      if (azanAudioRef.current) {
-        azanAudioRef.current.pause();
-        azanAudioRef.current = null;
-      }
-    };
+  const loadDailyReminder = React.useCallback((timezone?: string) => {
+    const reminder = getDailyReminder(timezone);
+    setDailyReminder(reminder);
   }, []);
 
-  const loadLocationAndPrayerTimes = async () => {
+  const loadLocationAndPrayerTimes = React.useCallback(async () => {
     try {
       const locationService = LocationService.getInstance();
       const userLocation = await locationService.getUserLocation();
@@ -106,12 +79,40 @@ const HomeScreen: React.FC = () => {
       const times = await getPrayerTimes(fallbackLocation.latitude, fallbackLocation.longitude, timeFormat);
       setPrayerTimes(times);
     }
-  };
+  }, [timeFormat, loadDailyReminder]);
 
-  const loadDailyReminder = (timezone?: string) => {
-    const reminder = getDailyReminder(timezone);
-    setDailyReminder(reminder);
-  };
+  useEffect(() => {
+    loadLocationAndPrayerTimes();
+    loadDailyReminder();
+    
+    const timeInterval = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timeInterval);
+  }, [loadLocationAndPrayerTimes, loadDailyReminder]);
+
+  useEffect(() => {
+    if (prayerTimes.length === 0) return;
+    
+    const interval = setInterval(() => {
+      setPrayerTimes(prevPrayerTimes => {
+        if (prevPrayerTimes.length > 0) {
+          return updatePrayerCountdowns(prevPrayerTimes, timeFormat);
+        }
+        return prevPrayerTimes;
+      });
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, [prayerTimes.length, timeFormat]);
+
+  useEffect(() => {
+    return () => {
+      if (azanAudioRef.current) {
+        azanAudioRef.current.pause();
+        azanAudioRef.current = null;
+      }
+    };
+  }, []);
+
 
   const handlePlayPauseAzan = async () => {
     if (!selectedAzanId) {
@@ -156,7 +157,6 @@ const HomeScreen: React.FC = () => {
     }
   };
 
-  const currentPrayer = prayerTimes.find(p => p.isCurrent) || null;
   const nextPrayer = prayerTimes.find(p => p.isNext) || null;
 
   const getCountryFlag = (country?: string): string => {
