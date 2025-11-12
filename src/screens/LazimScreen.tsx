@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { colors } from '../utils/theme';
 import './LazimScreen.css';
 
 interface LazimItem {
@@ -56,7 +54,6 @@ const mockLazimItems: LazimItem[] = [
 ];
 
 const LazimScreen: React.FC = () => {
-  const navigate = useNavigate();
   const [lazimItems, setLazimItems] = useState<LazimItem[]>(mockLazimItems);
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'daily' | 'weekly' | 'monthly'>('all');
   const [showAddModal, setShowAddModal] = useState(false);

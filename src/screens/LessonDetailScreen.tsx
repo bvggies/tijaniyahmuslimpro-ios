@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import UpgradePrompt from '../components/UpgradePrompt';
 import IslamicBackground from '../components/IslamicBackground';
-import { colors } from '../utils/theme';
 import './LessonDetailScreen.css';
 
 interface LessonContent {
@@ -43,7 +42,6 @@ const LessonDetailScreen: React.FC = () => {
   const { authState } = useAuth();
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [currentContentIndex, setCurrentContentIndex] = useState(0);
-  const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
   const [userAnswers, setUserAnswers] = useState<{ [key: number]: number }>({});
 
   useEffect(() => {

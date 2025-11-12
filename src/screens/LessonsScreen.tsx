@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import UpgradePrompt from '../components/UpgradePrompt';
 import IslamicBackground from '../components/IslamicBackground';
-import { colors } from '../utils/theme';
 import './LessonsScreen.css';
 
 interface Lesson {
@@ -43,7 +42,6 @@ const LessonsScreen: React.FC = () => {
   const navigate = useNavigate();
   const { authState } = useAuth();
   const [activeTab, setActiveTab] = useState<'courses' | 'lessons' | 'progress'>('courses');
-  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
   const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -261,7 +259,6 @@ const LessonsScreen: React.FC = () => {
       setShowUpgradePrompt(true);
       return;
     }
-    setSelectedCourse(course);
     // Navigate to course details or start course
   };
 

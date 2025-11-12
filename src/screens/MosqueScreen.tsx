@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import LocationService, { LocationData } from '../services/locationService';
-import { colors } from '../utils/theme';
+import React, { useEffect, useState, useCallback } from 'react';
+import LocationService from '../services/locationService';
 import './MosqueScreen.css';
 
 interface Mosque {
@@ -19,7 +18,7 @@ const MosqueScreen: React.FC = () => {
   const GOOGLE_API_KEY = 'AIzaSyDYF4HFEefrlQMuswHoefQDU-DawWBatDI';
 
   const toRad = (value: number) => (value * Math.PI) / 180;
-  const haversineKm = (lat1: number, lon1: number, lat2: number, lon2: number) => {
+  const haversineKm = useCallback((lat1: number, lon1: number, lat2: number, lon2: number) => {
     const R = 6371; // km
     const dLat = toRad(lat2 - lat1);
     const dLon = toRad(lon2 - lon1);
@@ -28,7 +27,7 @@ const MosqueScreen: React.FC = () => {
               Math.sin(dLon / 2) * Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c;
-  };
+  }, []);
 
   const openMaps = (name: string, address: string) => {
     const query = encodeURIComponent(`${name} ${address}`);
@@ -82,7 +81,7 @@ const MosqueScreen: React.FC = () => {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [haversineKm]);
 
   return (
     <div className="mosque-container">
