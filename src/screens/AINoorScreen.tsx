@@ -1,8 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
-import { useLanguage } from '../contexts/LanguageContext';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useTimeFormat } from '../contexts/TimeFormatContext';
-import { colors } from '../utils/theme';
 import './AINoorScreen.css';
 
 type Message = {
@@ -38,7 +36,6 @@ Keep responses concise but informative, and always end with Islamic phrases like
 const AINoorScreen: React.FC = () => {
   const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get('q') || '';
-  const { t } = useLanguage();
   const { formatTime } = useTimeFormat();
   
   const [messages, setMessages] = useState<Message[]>([
@@ -52,17 +49,6 @@ const AINoorScreen: React.FC = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  // Auto-send search query if provided
-  useEffect(() => {
-    if (searchQuery && searchQuery.trim()) {
-      setInput(searchQuery);
-      // Auto-send the search query after a short delay
-      setTimeout(() => {
-        onSend();
-      }, 500);
-    }
-  }, [searchQuery]);
 
   const callOpenAI = async (userMessage: string, conversationHistory: Message[]) => {
     try {
@@ -99,7 +85,7 @@ const AINoorScreen: React.FC = () => {
     }
   };
 
-  const onSend = async () => {
+  const onSend = useCallback(async () => {
     const content = input.trim();
     if (!content || isLoading) return;
 
@@ -134,7 +120,18 @@ const AINoorScreen: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [input, isLoading, messages]);
+
+  // Auto-send search query if provided
+  useEffect(() => {
+    if (searchQuery && searchQuery.trim()) {
+      setInput(searchQuery);
+      // Auto-send the search query after a short delay
+      setTimeout(() => {
+        onSend();
+      }, 500);
+    }
+  }, [searchQuery, onSend]);
 
   useEffect(() => {
     // Auto-scroll to bottom when new messages arrive

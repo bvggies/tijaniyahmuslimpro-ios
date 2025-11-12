@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { colors } from '../utils/theme';
 import './HajjJourneyScreen.css';
 
 const phases = [
@@ -11,7 +9,6 @@ const phases = [
 ];
 
 const HajjJourneyScreen: React.FC = () => {
-  const { t } = useLanguage();
   const [done, setDone] = useState<Record<string, boolean>>({});
 
   useEffect(() => {

@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { colors } from '../utils/theme';
 import './HajjUmrahScreen.css';
 
 interface ChecklistItem {
@@ -10,7 +8,6 @@ interface ChecklistItem {
 }
 
 const HajjUmrahScreen: React.FC = () => {
-  const { t } = useLanguage();
   const [items, setItems] = useState<ChecklistItem[]>([]);
 
   useEffect(() => {

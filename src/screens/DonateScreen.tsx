@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { colors } from '../utils/theme';
 import './DonateScreen.css';
 
 const DonateScreen: React.FC = () => {
-  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',

@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useLanguage } from '../contexts/LanguageContext';
-import { colors } from '../utils/theme';
 import './HajjScreen.css';
 
 const HajjScreen: React.FC = () => {
   const navigate = useNavigate();
-  const { t } = useLanguage();
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
 
   const toggleAccordion = (key: string) => {
