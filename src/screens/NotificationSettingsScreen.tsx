@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { colors } from '../utils/theme';
 import './NotificationSettingsScreen.css';
 
 interface NotificationSettings {
@@ -16,7 +14,6 @@ interface NotificationSettings {
 }
 
 const NotificationSettingsScreen: React.FC = () => {
-  const { t } = useLanguage();
   const [settings, setSettings] = useState<NotificationSettings>(() => {
     const saved = localStorage.getItem('notification_settings');
     if (saved) {

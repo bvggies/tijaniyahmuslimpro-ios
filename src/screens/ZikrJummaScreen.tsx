@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { colors } from '../utils/theme';
 import './ZikrJummaScreen.css';
 
@@ -175,7 +174,6 @@ const fridayDuas = [
 ];
 
 export default function ZikrJummaScreen() {
-  const navigate = useNavigate();
   const [zikrItems, setZikrItems] = useState<ZikrItem[]>(fridayZikr);
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'friday' | 'general' | 'surah'>('all');
   const [currentCounts, setCurrentCounts] = useState<{ [key: string]: number }>({});
@@ -192,9 +190,6 @@ export default function ZikrJummaScreen() {
     if (selectedCategory === 'all') return true;
     return item.category === selectedCategory;
   });
-
-  const completedCount = zikrItems.filter(item => item.completed).length;
-  const totalCount = zikrItems.length;
 
   const incrementCount = (id: string) => {
     const newCount = (currentCounts[id] || 0) + 1;

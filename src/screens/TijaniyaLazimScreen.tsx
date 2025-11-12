@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { colors } from '../utils/theme';
 import IslamicBackground from '../components/IslamicBackground';
 import './TijaniyaLazimScreen.css';
 
 const TijaniyaLazimScreen: React.FC = () => {
-  const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(0);
   const [counter, setCounter] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedStep, setSelectedStep] = useState(0);

@@ -1,6 +1,4 @@
 import React, { useState, useMemo } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { colors } from '../utils/theme';
 import './ZakatCalculatorScreen.css';
 
 type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'GHS' | 'NGN';
@@ -18,7 +16,6 @@ interface ZakatInputs {
 }
 
 const ZakatCalculatorScreen: React.FC = () => {
-  const { t } = useLanguage();
   const [currency, setCurrency] = useState<CurrencyCode>('USD');
   const [inputs, setInputs] = useState<ZakatInputs>({
     cash: '',
@@ -31,11 +28,11 @@ const ZakatCalculatorScreen: React.FC = () => {
     receivables: '',
     debts: '',
   });
-  const [goldPricePerGram, setGoldPricePerGram] = useState<number>(75);
-  const [silverPricePerGram, setSilverPricePerGram] = useState<number>(0.9);
+  const [goldPricePerGram] = useState<number>(75);
+  const [silverPricePerGram] = useState<number>(0.9);
 
   const parse = (v: string): number => {
-    const n = parseFloat((v || '').replace(/[^0-9.\-]/g, ''));
+    const n = parseFloat((v || '').replace(/[^0-9.-]/g, ''));
     return isNaN(n) ? 0 : n;
   };
 
