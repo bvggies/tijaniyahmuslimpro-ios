@@ -1,6 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { colors } from '../utils/theme';
 import './UpgradePrompt.css';
 
 interface UpgradePromptProps {
