@@ -215,6 +215,15 @@ const HomeScreen: React.FC = () => {
     { title: 'Community', titleArabic: 'المجتمع', icon: '💬', color: '#3F51B5', path: '/community' },
     { title: 'Donate', titleArabic: 'التبرع', icon: '❤️', color: '#E91E63', path: '/donate' },
     { title: 'Settings', titleArabic: 'الإعدادات', icon: '⚙️', color: '#607D8B', path: '/settings' },
+    { title: 'Digital Tasbih', titleArabic: 'السبحة الرقمية', icon: '📿', color: '#4CAF50', path: '/tasbih' },
+    { title: 'Wazifa', titleArabic: 'الوظيفة', icon: '📖', color: '#2196F3', path: '/wazifa' },
+    { title: 'Lazim Tracker', titleArabic: 'متتبع اللازم', icon: '✅', color: '#2E7D32', path: '/lazim-tracker' },
+    { title: 'Tijaniya Lazim', titleArabic: 'اللازم التجاني', icon: '🕌', color: '#00BFA5', path: '/tijaniya-lazim' },
+    { title: 'Zikr Jumma', titleArabic: 'ذكر الجمعة', icon: '📅', color: '#9C27B0', path: '/zikr-jumma' },
+    { title: 'Islamic Journal', titleArabic: 'المجلة الإسلامية', icon: '📔', color: '#FF9800', path: '/journal' },
+    { title: 'Hajj', titleArabic: 'الحج', icon: '🕋', color: '#795548', path: '/hajj' },
+    { title: 'Zakat Calculator', titleArabic: 'حاسبة الزكاة', icon: '💰', color: '#4CAF50', path: '/zakat-calculator' },
+    { title: 'Notifications', titleArabic: 'الإشعارات', icon: '🔔', color: '#FF5722', path: '/notifications' },
   ];
 
   return (

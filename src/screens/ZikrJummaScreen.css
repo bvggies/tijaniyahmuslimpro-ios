@@ -1,0 +1,678 @@
+.zikr-jumma-container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-bottom: 100px;
+}
+
+.scroll-container {
+  padding-bottom: 20px;
+}
+
+/* Info Card */
+.info-card {
+  margin: 20px;
+  margin-top: 10px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-content {
+  display: flex;
+  align-items: center;
+}
+
+.info-content > span {
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.info-text {
+  flex: 1;
+}
+
+.info-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.info-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 20px;
+}
+
+/* Filter Container */
+.filter-container {
+  display: flex;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  gap: 8px;
+}
+
+.filter-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 8px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+}
+
+.filter-button.selected {
+  background-color: #2E7D32;
+  color: #ffffff;
+}
+
+/* Section */
+.section {
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+/* Zikr Card */
+.zikr-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.zikr-card.completed {
+  background-color: #E8F5E8;
+  border-left: 4px solid #4CAF50;
+}
+
+.zikr-header {
+  margin-bottom: 12px;
+}
+
+.zikr-info {
+  flex: 1;
+}
+
+.zikr-title-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.zikr-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+}
+
+.zikr-title.completed {
+  color: #2E7D32;
+}
+
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+  color: white;
+  font-size: 12px;
+}
+
+.arabic-text {
+  font-size: 18px;
+  color: #2E7D32;
+  text-align: right;
+  margin-bottom: 8px;
+  line-height: 28px;
+}
+
+.transliteration-text {
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+.translation-text {
+  font-size: 14px;
+  color: #333;
+  line-height: 20px;
+}
+
+/* Progress */
+.progress-container {
+  margin-bottom: 12px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.progress-text {
+  font-size: 14px;
+  color: #666;
+}
+
+.progress-percentage {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2E7D32;
+}
+
+.progress-bar {
+  height: 6px;
+  background-color: #E0E0E0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #4CAF50;
+  transition: width 0.3s;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.count-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
+}
+
+.count-button.disabled {
+  background: linear-gradient(135deg, #E0E0E0, #F0F0F0);
+  color: #999;
+  cursor: not-allowed;
+}
+
+.reset-button-small {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Dua Card */
+.dua-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dua-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.dua-arabic {
+  font-size: 18px;
+  color: #2E7D32;
+  text-align: right;
+  margin-bottom: 8px;
+  line-height: 28px;
+}
+
+.dua-transliteration {
+  font-size: 14px;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+.dua-translation {
+  font-size: 14px;
+  color: #333;
+  line-height: 20px;
+}
+
+/* Reminder Card */
+.reminder-card {
+  margin: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.reminder-gradient {
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  color: white;
+}
+
+.reminder-gradient > span {
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.reminder-content {
+  flex: 1;
+}
+
+.reminder-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.reminder-text {
+  font-size: 14px;
+  color: #F3E5F5;
+  line-height: 20px;
+  font-style: italic;
+}
+
+/* Haylala Section */
+.haylala-section {
+  margin: 20px;
+  margin-top: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.haylala-header {
+  padding: 20px;
+  color: white;
+}
+
+.haylala-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.haylala-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.haylala-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 20px;
+}
+
+.info-button {
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.haylala-content {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+}
+
+.haylala-intro-text {
+  font-size: 16px;
+  color: #2C3E50;
+  line-height: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-style: italic;
+}
+
+.haylala-steps-container {
+  margin-bottom: 20px;
+}
+
+.haylala-step-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 16px;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.haylala-step-card.completed {
+  background-color: rgba(76, 175, 80, 0.1);
+  border-left: 4px solid #00BFA5;
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.haylala-step-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.haylala-step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #00BFA5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.haylala-step-number.completed {
+  background-color: #2E7D32;
+}
+
+.haylala-step-number-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.haylala-step-title-container {
+  flex: 1;
+}
+
+.haylala-step-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2C3E50;
+  margin-bottom: 4px;
+}
+
+.haylala-step-title.completed {
+  color: #00BFA5;
+}
+
+.haylala-step-progress {
+  font-size: 14px;
+  color: #7F8C8D;
+  font-weight: 600;
+}
+
+.completed-icon {
+  margin-left: 8px;
+  color: #00BFA5;
+  font-size: 24px;
+}
+
+.haylala-step-content {
+  margin-bottom: 20px;
+}
+
+.haylala-arabic-text {
+  font-size: 18px;
+  color: #2C3E50;
+  text-align: right;
+  margin-bottom: 8px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.haylala-transliteration-text {
+  font-size: 16px;
+  color: #7F8C8D;
+  font-style: italic;
+  margin-bottom: 8px;
+  line-height: 24px;
+}
+
+.haylala-english-text {
+  font-size: 16px;
+  color: #34495E;
+  line-height: 24px;
+}
+
+.reset-all-button {
+  margin-top: 10px;
+  border-radius: 25px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #00BFA5, #2E7D32);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.reset-all-button:hover {
+  opacity: 0.9;
+}
+
+/* Counter Styles */
+.counter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00BFA5;
+  border-radius: 25px;
+  padding: 8px 16px;
+  gap: 8px;
+}
+
+.counter-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.counter-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.counter-display {
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.reset-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.reset-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Niyyah Card */
+.niyyah-card {
+  background-color: #ffffff;
+  margin: 0 0 20px;
+  border-radius: 16px;
+  padding: 20px;
+  border-left: 4px solid #00BFA5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.niyyah-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #00BFA5;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.niyyah-arabic {
+  font-size: 18px;
+  color: #333;
+  text-align: right;
+  line-height: 32px;
+  margin-bottom: 12px;
+}
+
+.niyyah-transliteration {
+  font-size: 16px;
+  color: #666;
+  line-height: 24px;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.niyyah-english {
+  font-size: 16px;
+  color: #333;
+  line-height: 24px;
+  margin-bottom: 12px;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #E0E0E0;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2C3E50;
+}
+
+.modal-close-button {
+  padding: 4px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+}
+
+.modal-scroll-view {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-text {
+  font-size: 16px;
+  color: #34495E;
+  line-height: 24px;
+  margin-bottom: 16px;
+}
+
+.modal-text strong {
+  font-weight: bold;
+  color: #2C3E50;
+}
+
+@media (max-width: 768px) {
+  .haylala-section {
+    margin: 15px;
+  }
+
+  .section {
+    padding: 0 15px;
+  }
+
+  .filter-container {
+    padding: 0 15px;
+  }
+
+  .modal-content {
+    width: 95%;
+  }
+}
+

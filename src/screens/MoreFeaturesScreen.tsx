@@ -8,8 +8,7 @@ interface Feature {
   description: string;
   icon: string;
   color: string;
-  path?: string;
-  comingSoon?: boolean;
+  path: string;
 }
 
 const MoreFeaturesScreen: React.FC = () => {
@@ -39,7 +38,37 @@ const MoreFeaturesScreen: React.FC = () => {
 
   const handleSearchResultPress = (result: SearchResult) => {
     if (result.screen) {
-      navigate(`/${result.screen.toLowerCase().replace(/\s+/g, '-')}`);
+      // Map screen names to routes
+      const screenToRoute: { [key: string]: string } = {
+        'Scholars': '/scholars',
+        'Qibla': '/qibla',
+        'Prayer Times': '/prayer-times',
+        'Tasbih': '/tasbih',
+        'Wazifa': '/wazifa',
+        'Lazim': '/lazim-tracker',
+        'TijaniyaLazim': '/tijaniya-lazim',
+        'Azan': '/azan',
+        'ZikrJumma': '/zikr-jumma',
+        'Journal': '/journal',
+        'Lessons': '/lessons',
+        'Community': '/community',
+        'Mosque': '/mosque',
+        'Makkah Live': '/makkah-live',
+        'AI Noor': '/ai-noor',
+        'Donate': '/donate',
+        'ZakatCalculator': '/zakat-calculator',
+        'Hajj': '/hajj',
+        'NotificationSettings': '/notifications',
+      };
+      
+      const route = screenToRoute[result.screen] || `/${result.screen.toLowerCase().replace(/\s+/g, '-')}`;
+      navigate(route);
+    } else if (result.type === 'prayer') {
+      navigate('/prayer-times');
+    } else if (result.type === 'dua') {
+      navigate('/duas');
+    } else if (result.type === 'quran') {
+      navigate('/quran');
     }
   };
 
@@ -67,18 +96,18 @@ const MoreFeaturesScreen: React.FC = () => {
       description: 'Track your daily Islamic commitments',
       icon: '📋',
       color: '#2196F3',
-      comingSoon: true,
+      path: '/lazim-tracker',
     },
     {
       title: 'Tijaniya Lazim',
-      description: 'Complete guide to performing the Lazim',
+      description: 'Complete guide to performing the Lazim with step-by-step instructions',
       icon: '📖',
       color: '#00BFA5',
-      comingSoon: true,
+      path: '/tijaniya-lazim',
     },
     {
       title: 'Azan',
-      description: 'Listen to beautiful Azan from famous mosques',
+      description: 'Listen to beautiful Azan from famous mosques around the world',
       icon: '🔊',
       color: '#2E7D32',
       path: '/azan',
@@ -88,18 +117,18 @@ const MoreFeaturesScreen: React.FC = () => {
       description: 'Special Friday prayers and dhikr',
       icon: '📅',
       color: '#9C27B0',
-      comingSoon: true,
+      path: '/zikr-jumma',
     },
     {
-      title: 'Journal',
+      title: 'Islamic Journal',
       description: 'Reflect on your spiritual journey',
       icon: '📔',
-      color: '#00BFA5',
+      color: '#FF5722',
       path: '/journal',
     },
     {
       title: 'Scholars',
-      description: 'Learn about Tijaniya scholars',
+      description: 'Learn from Islamic scholars and teachers',
       icon: '👨‍🏫',
       color: '#607D8B',
       path: '/scholars',
@@ -109,11 +138,11 @@ const MoreFeaturesScreen: React.FC = () => {
       description: 'Interactive Islamic lessons and courses',
       icon: '🎓',
       color: '#4CAF50',
-      comingSoon: true,
+      path: '/lessons',
     },
     {
       title: 'Community',
-      description: 'Connect with fellow Muslims',
+      description: 'Connect with fellow Muslims worldwide',
       icon: '💬',
       color: '#E91E63',
       path: '/community',
@@ -123,7 +152,7 @@ const MoreFeaturesScreen: React.FC = () => {
       description: 'Find nearby mosques and prayer facilities',
       icon: '📍',
       color: '#795548',
-      comingSoon: true,
+      path: '/mosque',
     },
     {
       title: 'Makkah Live',
@@ -137,35 +166,35 @@ const MoreFeaturesScreen: React.FC = () => {
       description: 'AI-powered Islamic assistant',
       icon: '💡',
       color: '#00BCD4',
-      comingSoon: true,
+      path: '/ai-noor',
     },
     {
       title: 'Donate',
       description: 'Support Islamic causes',
       icon: '❤️',
       color: '#F44336',
-      comingSoon: true,
+      path: '/donate',
     },
     {
       title: 'Zakat Calculator',
       description: 'Calculate your obligatory charity (Zakat)',
       icon: '🧮',
       color: '#4CAF50',
-      comingSoon: true,
+      path: '/zakat-calculator',
     },
     {
-      title: 'Hajj & Umrah',
-      description: 'Hajj Journey and Umrah guides',
+      title: 'Hajj',
+      description: 'Makkah Live, Hajj & Umrah, Hajj Journey',
       icon: '🕋',
       color: '#11C48D',
-      comingSoon: true,
+      path: '/hajj',
     },
     {
       title: 'Notifications',
       description: 'Manage prayer and reminder notifications',
       icon: '🔔',
       color: '#2E7D32',
-      comingSoon: true,
+      path: '/notifications',
     },
   ];
 
@@ -266,32 +295,21 @@ const MoreFeaturesScreen: React.FC = () => {
         </div>
       ) : (
         <div className="more-features-grid">
-          {filteredFeatures.map((feature, index) => {
-            const content = (
-              <div
-                className={`more-feature-card ${feature.comingSoon ? 'more-feature-card-coming-soon' : ''}`}
-                style={{ '--feature-color': feature.color } as React.CSSProperties}
-                onClick={() => {
-                  if (feature.path && !feature.comingSoon) {
-                    navigate(feature.path);
-                  }
-                }}
-              >
-                {feature.comingSoon && (
-                  <div className="more-coming-soon-badge">Coming Soon</div>
-                )}
-                
-                <div className="more-feature-icon-container" style={{ backgroundColor: `${feature.color}33` }}>
-                  <span className="more-feature-icon">{feature.icon}</span>
-                </div>
-                
-                <h3 className="more-feature-title">{feature.title}</h3>
-                <p className="more-feature-description">{feature.description}</p>
+          {filteredFeatures.map((feature, index) => (
+            <div
+              key={index}
+              className="more-feature-card"
+              style={{ '--feature-color': feature.color } as React.CSSProperties}
+              onClick={() => navigate(feature.path)}
+            >
+              <div className="more-feature-icon-container" style={{ backgroundColor: `${feature.color}33` }}>
+                <span className="more-feature-icon">{feature.icon}</span>
               </div>
-            );
-
-            return <div key={index}>{content}</div>;
-          })}
+              
+              <h3 className="more-feature-title">{feature.title}</h3>
+              <p className="more-feature-description">{feature.description}</p>
+            </div>
+          ))}
         </div>
       )}
 

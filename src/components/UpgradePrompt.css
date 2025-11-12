@@ -1,0 +1,156 @@
+.upgrade-prompt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  z-index: 3000;
+}
+
+.upgrade-prompt-container {
+  background: #0B3F39;
+  border-radius: 20px;
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.3);
+}
+
+.upgrade-prompt-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.upgrade-prompt-icon-container {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  background: #CDE8DC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.upgrade-prompt-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+}
+
+.upgrade-prompt-lock-overlay {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: #00BFA5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #0B3F39;
+  font-size: 10px;
+}
+
+.upgrade-prompt-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #E7F5F1;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.upgrade-prompt-subtitle {
+  font-size: 16px;
+  color: #BBE1D5;
+  text-align: center;
+  line-height: 22px;
+  margin: 0;
+}
+
+.upgrade-prompt-benefits {
+  margin-bottom: 24px;
+}
+
+.upgrade-prompt-benefits-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #E7F5F1;
+  margin: 0 0 12px 0;
+}
+
+.upgrade-prompt-benefit-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 8px;
+  color: #E7F5F1;
+  font-size: 14px;
+}
+
+.upgrade-prompt-benefit-item span:first-child {
+  color: #11C48D;
+  margin-right: 12px;
+  font-size: 20px;
+}
+
+.upgrade-prompt-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.upgrade-prompt-signup-button {
+  background: linear-gradient(135deg, #00BFA5 0%, #11C48D 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+
+.upgrade-prompt-signup-button:hover {
+  transform: translateY(-2px);
+}
+
+.upgrade-prompt-signin-button {
+  background: transparent;
+  border: none;
+  padding: 12px;
+  color: #BBE1D5;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.upgrade-prompt-signin-button strong {
+  color: #00BFA5;
+  font-weight: 700;
+}
+
+.upgrade-prompt-cancel-button {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  color: #BBE1D5;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+}
+

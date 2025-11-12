@@ -1,0 +1,131 @@
+.mosque-container {
+  min-height: 100vh;
+  background: #052F2A;
+  padding-bottom: 100px;
+}
+
+.mosque-header {
+  background: linear-gradient(180deg, #0B3F39 0%, #052F2A 100%);
+  padding: 50px 20px 20px 20px;
+}
+
+.mosque-header-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #E7F5F1;
+  margin: 0;
+}
+
+.mosque-header-subtitle {
+  font-size: 16px;
+  color: #BBE1D5;
+  margin: 4px 0 0 0;
+}
+
+.mosque-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.mosque-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 191, 165, 0.3);
+  border-top-color: #00BFA5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.mosque-loading-text {
+  color: #BBE1D5;
+  margin-top: 10px;
+}
+
+.mosque-list {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mosque-empty {
+  color: #BBE1D5;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.mosque-card {
+  background: #0B3F39;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.mosque-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.mosque-name {
+  color: #E7F5F1;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.mosque-distance {
+  display: flex;
+  align-items: center;
+  background: #CDE8DC;
+  padding: 4px 8px;
+  border-radius: 10px;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #052F2A;
+}
+
+.mosque-address {
+  color: #BBE1D5;
+  margin: 6px 0 0 0;
+  font-size: 14px;
+}
+
+.mosque-row {
+  display: flex;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.mosque-btn-small {
+  display: flex;
+  align-items: center;
+  background: #00BFA5;
+  border-radius: 10px;
+  padding: 6px 10px;
+  border: none;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  gap: 6px;
+  transition: transform 0.2s;
+}
+
+.mosque-btn-small:hover {
+  transform: translateY(-2px);
+}
+
+.mosque-btn-route {
+  background: #CDE8DC;
+  color: #052F2A;
+}
+

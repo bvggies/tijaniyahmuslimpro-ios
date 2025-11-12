@@ -26,6 +26,20 @@ import ScholarsScreen from './screens/ScholarsScreen';
 import ScholarDetailScreen from './screens/ScholarDetailScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import CommunityScreen from './screens/CommunityScreen';
+import LessonsScreen from './screens/LessonsScreen';
+import LessonDetailScreen from './screens/LessonDetailScreen';
+import AINoorScreen from './screens/AINoorScreen';
+import TariqaTijaniyyahScreen from './screens/TariqaTijaniyyahScreen';
+import DonateScreen from './screens/DonateScreen';
+import MosqueScreen from './screens/MosqueScreen';
+import LazimScreen from './screens/LazimScreen';
+import HajjScreen from './screens/HajjScreen';
+import HajjUmrahScreen from './screens/HajjUmrahScreen';
+import HajjJourneyScreen from './screens/HajjJourneyScreen';
+import ZakatCalculatorScreen from './screens/ZakatCalculatorScreen';
+import NotificationSettingsScreen from './screens/NotificationSettingsScreen';
+import TijaniyaLazimScreen from './screens/TijaniyaLazimScreen';
+import ZikrJummaScreen from './screens/ZikrJummaScreen';
 import './App.css';
 
 // Protected Route Component
@@ -82,12 +96,23 @@ const AppRoutes: React.FC = () => {
       <Route path="/wazifa" element={<ProtectedRoute><WazifaScreen /></ProtectedRoute>} />
       <Route path="/azan" element={<ProtectedRoute><AzanScreen /></ProtectedRoute>} />
       <Route path="/tijaniyah-features" element={<ProtectedRoute><TijaniyahFeaturesScreen /></ProtectedRoute>} />
-      <Route path="/tariqa-tijaniyyah" element={<ProtectedRoute><div className="container"><h1>Tariqa Tijaniyyah (Coming Soon)</h1></div></ProtectedRoute>} />
+      <Route path="/tariqa-tijaniyyah" element={<ProtectedRoute><TariqaTijaniyyahScreen /></ProtectedRoute>} />
+      <Route path="/lessons" element={<ProtectedRoute><LessonsScreen /></ProtectedRoute>} />
+      <Route path="/lesson/:lessonId" element={<ProtectedRoute><LessonDetailScreen /></ProtectedRoute>} />
+      <Route path="/ai-noor" element={<ProtectedRoute><AINoorScreen /></ProtectedRoute>} />
+      <Route path="/donate" element={<ProtectedRoute><DonateScreen /></ProtectedRoute>} />
+      <Route path="/mosque" element={<ProtectedRoute><MosqueScreen /></ProtectedRoute>} />
       <Route path="/tijaniya-fiqh" element={<ProtectedRoute><div className="container"><h1>Tijaniya Fiqh (Coming Soon)</h1></div></ProtectedRoute>} />
-      <Route path="/tijaniya-lazim" element={<ProtectedRoute><div className="container"><h1>Tijaniya Lazim (Coming Soon)</h1></div></ProtectedRoute>} />
+      <Route path="/tijaniya-lazim" element={<ProtectedRoute><TijaniyaLazimScreen /></ProtectedRoute>} />
+      <Route path="/lazim-tracker" element={<ProtectedRoute><LazimScreen /></ProtectedRoute>} />
+      <Route path="/hajj" element={<ProtectedRoute><HajjScreen /></ProtectedRoute>} />
+      <Route path="/hajj-umrah" element={<ProtectedRoute><HajjUmrahScreen /></ProtectedRoute>} />
+      <Route path="/hajj-journey" element={<ProtectedRoute><HajjJourneyScreen /></ProtectedRoute>} />
+      <Route path="/zakat-calculator" element={<ProtectedRoute><ZakatCalculatorScreen /></ProtectedRoute>} />
+      <Route path="/notifications" element={<ProtectedRoute><NotificationSettingsScreen /></ProtectedRoute>} />
       <Route path="/resources-beginners" element={<ProtectedRoute><div className="container"><h1>Resources for Beginners (Coming Soon)</h1></div></ProtectedRoute>} />
       <Route path="/proof-tasawwuf" element={<ProtectedRoute><div className="container"><h1>Proof of Tasawwuf Part 1 (Coming Soon)</h1></div></ProtectedRoute>} />
-      <Route path="/zikr-jumma" element={<ProtectedRoute><div className="container"><h1>Zikr Jumma (Coming Soon)</h1></div></ProtectedRoute>} />
+      <Route path="/zikr-jumma" element={<ProtectedRoute><ZikrJummaScreen /></ProtectedRoute>} />
       <Route path="/journal" element={<ProtectedRoute><JournalScreen /></ProtectedRoute>} />
       <Route path="/scholars" element={<ProtectedRoute><ScholarsScreen /></ProtectedRoute>} />
       <Route path="/scholar/:id" element={<ProtectedRoute><ScholarDetailScreen /></ProtectedRoute>} />

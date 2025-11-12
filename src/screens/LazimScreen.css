@@ -1,0 +1,363 @@
+.lazim-container {
+  min-height: 100vh;
+  background: #F5F5F5;
+  padding-bottom: 100px;
+}
+
+.lazim-header {
+  background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+  padding: 50px 20px 20px 20px;
+}
+
+.lazim-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lazim-header-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.lazim-header-subtitle {
+  font-size: 16px;
+  color: #E8F5E8;
+  margin: 4px 0 0 0;
+}
+
+.lazim-add-button {
+  padding: 8px;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.lazim-stats-container {
+  display: flex;
+  padding: 16px 20px;
+  gap: 8px;
+}
+
+.lazim-stat-card {
+  flex: 1;
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lazim-stat-number {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2E7D32;
+  margin: 0;
+}
+
+.lazim-stat-label {
+  font-size: 12px;
+  color: #666;
+  margin: 4px 0 0 0;
+}
+
+.lazim-progress-container {
+  padding: 0 20px;
+  margin-bottom: 16px;
+}
+
+.lazim-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.lazim-progress-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.lazim-progress-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2E7D32;
+  margin: 0;
+}
+
+.lazim-progress-bar {
+  height: 8px;
+  background: #E0E0E0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lazim-progress-fill {
+  height: 100%;
+  background: #4CAF50;
+  transition: width 0.3s;
+}
+
+.lazim-filter-container {
+  display: flex;
+  padding: 0 20px;
+  margin-bottom: 16px;
+  gap: 8px;
+}
+
+.lazim-filter-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.lazim-selected-filter-button {
+  background: #2E7D32;
+  color: #FFFFFF;
+}
+
+.lazim-list {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lazim-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lazim-completed-card {
+  background: #E8F5E8;
+  border-left: 4px solid #4CAF50;
+}
+
+.lazim-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.lazim-info {
+  flex: 1;
+  margin-right: 12px;
+}
+
+.lazim-title-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.lazim-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  flex: 1;
+}
+
+.lazim-completed-text {
+  color: #2E7D32;
+}
+
+.lazim-frequency-badge {
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+  gap: 2px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.lazim-description {
+  font-size: 14px;
+  color: #666;
+  line-height: 20px;
+  margin: 0;
+}
+
+.lazim-checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  border: 2px solid #E0E0E0;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-size: 20px;
+}
+
+.lazim-checked-box {
+  background: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.lazim-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lazim-date-text {
+  font-size: 12px;
+  color: #999;
+  margin: 0;
+}
+
+.lazim-progress-indicator {
+  display: flex;
+}
+
+.lazim-progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: #E0E0E0;
+  margin-left: 4px;
+}
+
+.lazim-completed-dot {
+  background: #4CAF50;
+}
+
+.lazim-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.lazim-modal-content {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.lazim-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.lazim-modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.lazim-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.lazim-input {
+  width: 100%;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.lazim-textarea {
+  width: 100%;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  min-height: 80px;
+  resize: vertical;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.lazim-frequency-selector {
+  margin-bottom: 20px;
+}
+
+.lazim-frequency-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 12px 0;
+}
+
+.lazim-frequency-option {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: #F5F5F5;
+  border: none;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  cursor: pointer;
+}
+
+.lazim-selected-frequency-option {
+  background: #2E7D32;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.lazim-save-button {
+  width: 100%;
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+

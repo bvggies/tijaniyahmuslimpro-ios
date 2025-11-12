@@ -1,0 +1,501 @@
+.tijaniya-lazim-container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-bottom: 100px;
+}
+
+.scroll-container {
+  padding-bottom: 20px;
+}
+
+.header {
+  padding: 40px 20px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.header-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.header-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin: 15px 0 5px;
+  letter-spacing: 2px;
+}
+
+.header-subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 5px;
+  font-style: italic;
+}
+
+.header-arabic {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.counter-container {
+  margin: 0 20px 30px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.counter-gradient {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.counter-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.counter-display {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.counter-number {
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+}
+
+.counter-label {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 5px;
+}
+
+.counter-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.counter-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.counter-button:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.counter-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.reset-button {
+  padding: 10px 20px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.reset-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.steps-container {
+  padding: 0 20px;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.step-card {
+  margin-bottom: 15px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.step-card:hover {
+  transform: translateY(-2px);
+}
+
+.step-gradient {
+  padding: 20px;
+  color: white;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.step-number-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.step-title-container {
+  flex: 1;
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.step-instruction {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.step-icon {
+  font-size: 24px;
+}
+
+.arabic-container {
+  margin-bottom: 10px;
+}
+
+.arabic-text {
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.transliteration-container {
+  margin-bottom: 10px;
+}
+
+.transliteration-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  font-style: italic;
+  line-height: 20px;
+}
+
+.translation-container {
+  margin-bottom: 5px;
+}
+
+.translation-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  line-height: 18px;
+}
+
+.instructions-container {
+  margin: 0 20px 30px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instructions-gradient {
+  padding: 20px;
+  background: linear-gradient(135deg, #ffffff, #f5f5f5);
+}
+
+.instructions-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.instructions-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 22px;
+  text-align: left;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.modal-gradient {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  flex: 1;
+}
+
+.close-button {
+  padding: 5px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-scroll {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-arabic-container {
+  margin-bottom: 15px;
+}
+
+.modal-arabic-text {
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.modal-transliteration-container {
+  margin-bottom: 15px;
+}
+
+.modal-transliteration-text {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  font-style: italic;
+  line-height: 24px;
+}
+
+.modal-translation-container {
+  margin-bottom: 20px;
+}
+
+.modal-translation-text {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  line-height: 22px;
+}
+
+.modal-details-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.modal-details-text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 20px;
+  text-align: justify;
+}
+
+/* Niyyah styles */
+.niyyah-card {
+  margin: 0 20px 20px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.niyyah-gradient {
+  padding: 20px;
+  color: white;
+}
+
+.niyyah-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.niyyah-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.niyyah-number-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.niyyah-title-container {
+  flex: 1;
+}
+
+.niyyah-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.niyyah-instruction {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.niyyah-icon {
+  font-size: 24px;
+}
+
+.lazim-type-container {
+  margin-bottom: 20px;
+}
+
+.lazim-type-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.lazim-type-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.lazim-type-button {
+  padding: 12px 20px;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid transparent;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lazim-type-button.selected {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: white;
+  color: white;
+}
+
+.selected-niyyah-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 15px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 30px 15px;
+  }
+
+  .header-title {
+    font-size: 20px;
+  }
+
+  .counter-container {
+    margin: 0 15px 20px;
+  }
+
+  .steps-container {
+    padding: 0 15px;
+  }
+
+  .modal-content {
+    width: 95%;
+  }
+}
+

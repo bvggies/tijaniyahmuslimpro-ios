@@ -1,0 +1,221 @@
+.notification-settings-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #052F2A 0%, #CDE8DC 100%);
+  padding-bottom: 100px;
+}
+
+.notification-settings-header {
+  background: linear-gradient(180deg, #0B3F39 0%, #052F2A 100%);
+  padding: 50px 20px 20px 20px;
+}
+
+.notification-settings-header-title {
+  color: #E7F5F1;
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+}
+
+.notification-settings-header-subtitle {
+  color: #BBE1D5;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+
+.notification-setting-card {
+  background: #0B3F39;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-card-title {
+  color: #E7F5F1;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+}
+
+.notification-permission-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.notification-permission-icon {
+  font-size: 24px;
+}
+
+.notification-permission-text {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.notification-permission-granted {
+  color: #11C48D;
+}
+
+.notification-permission-denied {
+  color: #FF5722;
+}
+
+.notification-permission-button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #00BFA5 0%, #11C48D 100%);
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.notification-permission-button:hover {
+  transform: translateY(-2px);
+}
+
+.notification-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-toggle-row:last-child {
+  border-bottom: none;
+}
+
+.notification-toggle-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.notification-toggle-icon {
+  font-size: 24px;
+}
+
+.notification-toggle-text {
+  flex: 1;
+}
+
+.notification-toggle-title {
+  color: #E7F5F1;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.notification-toggle-subtitle {
+  color: #BBE1D5;
+  font-size: 14px;
+  margin: 0;
+}
+
+.notification-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.notification-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.notification-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #CDE8DC;
+  transition: 0.3s;
+  border-radius: 28px;
+}
+
+.notification-slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #FFFFFF;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.notification-switch input:checked + .notification-slider {
+  background-color: #052F2A;
+}
+
+.notification-switch input:checked + .notification-slider:before {
+  transform: translateX(22px);
+}
+
+.notification-time-picker {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-time-label {
+  display: block;
+  color: #E7F5F1;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.notification-time-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #052F2A;
+  color: #E7F5F1;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.notification-reminder-types {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-reminder-types-title {
+  color: #E7F5F1;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+
+.notification-test-button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 191, 165, 0.4);
+  background: transparent;
+  color: #00BFA5;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.notification-test-button:hover {
+  background: rgba(0, 191, 165, 0.1);
+}
+

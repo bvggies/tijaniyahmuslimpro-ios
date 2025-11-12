@@ -1,0 +1,245 @@
+.islamic-background-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.islamic-background-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Central Islamic Mandala */
+.islamic-background-mandala {
+  position: fixed;
+  top: 30%;
+  left: 40%;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.mandala-outer {
+  width: 120px;
+  height: 120px;
+  border: 4px solid #00BFA5;
+  border-radius: 60px;
+  position: absolute;
+}
+
+.mandala-middle {
+  width: 80px;
+  height: 80px;
+  border: 3px solid #11C48D;
+  border-radius: 40px;
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+.mandala-inner {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #00BFA5;
+  border-radius: 25px;
+  position: absolute;
+  transform: rotate(90deg);
+}
+
+.mandala-center {
+  width: 20px;
+  height: 20px;
+  background: #FFC107;
+  border-radius: 10px;
+  position: absolute;
+}
+
+/* Corner Patterns */
+.corner-pattern {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.corner-pattern-1 {
+  top: 50px;
+  left: 20px;
+}
+
+.corner-pattern-2 {
+  top: 50px;
+  right: 20px;
+}
+
+.corner-pattern-3 {
+  bottom: 50px;
+  left: 20px;
+}
+
+.corner-pattern-4 {
+  bottom: 50px;
+  right: 20px;
+}
+
+.corner-shape {
+  border-radius: 50%;
+  transform: rotate(45deg);
+  margin-bottom: 10px;
+}
+
+.corner-shape-1 {
+  width: 60px;
+  height: 60px;
+  border: 4px solid #00BFA5;
+  background: rgba(0, 191, 165, 0.15);
+}
+
+.corner-shape-2 {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #11C48D;
+  background: rgba(17, 196, 141, 0.15);
+}
+
+.corner-shape-3 {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #00BFA5;
+  background: rgba(0, 191, 165, 0.15);
+}
+
+.corner-shape-4 {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #11C48D;
+  background: rgba(17, 196, 141, 0.15);
+}
+
+.corner-shape-5 {
+  width: 35px;
+  height: 35px;
+  border: 3px solid #00BFA5;
+  background: rgba(0, 191, 165, 0.15);
+}
+
+.corner-shape-6 {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #11C48D;
+  background: rgba(17, 196, 141, 0.15);
+}
+
+.corner-shape-7 {
+  width: 45px;
+  height: 45px;
+  border: 4px solid #00BFA5;
+  background: rgba(0, 191, 165, 0.15);
+}
+
+.corner-shape-8 {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #11C48D;
+  background: rgba(17, 196, 141, 0.15);
+}
+
+.corner-shape-9 {
+  width: 15px;
+  height: 15px;
+  border: 2px solid #00BFA5;
+  background: rgba(0, 191, 165, 0.15);
+}
+
+.corner-shape-10 {
+  width: 55px;
+  height: 55px;
+  border: 4px solid #11C48D;
+  background: rgba(17, 196, 141, 0.15);
+}
+
+.corner-shape-11 {
+  width: 38px;
+  height: 38px;
+  border: 3px solid #00BFA5;
+  background: rgba(0, 191, 165, 0.15);
+}
+
+.corner-shape-12 {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #11C48D;
+  background: rgba(17, 196, 141, 0.15);
+}
+
+/* Floating Elements */
+.floating-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.floating-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid;
+}
+
+.floating-circle-1 {
+  top: 15%;
+  left: 10%;
+  width: 30px;
+  height: 30px;
+  border-color: #00BFA5;
+  background: rgba(0, 191, 165, 0.1);
+}
+
+.floating-circle-2 {
+  top: 25%;
+  right: 10%;
+  width: 25px;
+  height: 25px;
+  border-color: #11C48D;
+  background: rgba(17, 196, 141, 0.1);
+}
+
+.floating-circle-3 {
+  top: 45%;
+  left: 5%;
+  width: 20px;
+  height: 20px;
+  border-color: #00BFA5;
+  background: rgba(0, 191, 165, 0.1);
+}
+
+.floating-circle-4 {
+  top: 55%;
+  right: 5%;
+  width: 35px;
+  height: 35px;
+  border-color: #11C48D;
+  background: rgba(17, 196, 141, 0.1);
+}
+
+.floating-circle-5 {
+  bottom: 30%;
+  left: 15%;
+  width: 28px;
+  height: 28px;
+  border-color: #00BFA5;
+  background: rgba(0, 191, 165, 0.1);
+}
+
+.floating-circle-6 {
+  bottom: 40%;
+  right: 20%;
+  width: 22px;
+  height: 22px;
+  border-color: #11C48D;
+  background: rgba(17, 196, 141, 0.1);
+}
+

@@ -1,0 +1,107 @@
+.hajj-journey-container {
+  min-height: 100vh;
+  background: #052F2A;
+  padding-bottom: 100px;
+}
+
+.hajj-journey-header {
+  background: linear-gradient(180deg, #0B3F39 0%, #052F2A 100%);
+  padding: 50px 20px 20px 20px;
+}
+
+.hajj-journey-header-title {
+  color: #E7F5F1;
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+}
+
+.hajj-journey-header-subtitle {
+  color: #BBE1D5;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+
+.hajj-journey-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hajj-journey-phase-card {
+  background: #0B3F39;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hajj-journey-phase-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.hajj-journey-phase-title {
+  color: #E7F5F1;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+.hajj-journey-phase-text {
+  color: #BBE1D5;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0 0 12px 0;
+}
+
+.hajj-journey-done-btn {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 6px 12px;
+  background: #0B3F39;
+  color: #BBE1D5;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 8px;
+}
+
+.hajj-journey-done-btn:hover {
+  background: rgba(11, 63, 57, 0.8);
+}
+
+.hajj-journey-done-btn-active {
+  border-color: #11C48D;
+  background: rgba(17, 196, 141, 0.2);
+}
+
+.hajj-journey-done-btn-text-active {
+  color: #11C48D;
+}
+
+.hajj-journey-map-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.hajj-journey-map-btn {
+  border: 1px solid rgba(0, 191, 165, 0.4);
+  border-radius: 16px;
+  padding: 6px 10px;
+  background: transparent;
+  color: #00BFA5;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hajj-journey-map-btn:hover {
+  background: rgba(0, 191, 165, 0.1);
+}
+
