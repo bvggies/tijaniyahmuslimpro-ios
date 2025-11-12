@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { colors } from '../utils/theme';
 import './LoginScreen.css';
 
 const LoginScreen: React.FC = () => {
@@ -42,7 +41,7 @@ const LoginScreen: React.FC = () => {
 
   const handleForgotPassword = () => {
     if (!email.trim()) {
-      alert('Email Required', 'Please enter your email address first');
+      alert('Email Required: Please enter your email address first');
       return;
     }
     alert(`A password reset link has been sent to ${email}`);

@@ -3,7 +3,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import ProfileAvatar from '../components/ProfileAvatar';
 import CountryPicker from '../components/CountryPicker';
-import { colors } from '../utils/theme';
 import './RegisterScreen.css';
 
 const RegisterScreen: React.FC = () => {
