@@ -71,24 +71,26 @@ const PWAInstallPrompt: React.FC = () => {
       setShowFallback(false);
     });
 
-    // Fallback: Show prompt after a delay if beforeinstallprompt doesn't fire
-    // This helps with browsers that don't support the event (Safari, Firefox)
+    // Fallback: Only show manual instructions for iOS Safari (which doesn't support beforeinstallprompt)
+    // For other browsers, wait longer to see if beforeinstallprompt fires
     const fallbackTimer = setTimeout(() => {
       if (!deferredPrompt && !isInstalled) {
-        // Check if we're on a mobile device
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        // Check if we're on iOS (Safari)
+        // Check if we're on iOS (Safari) - the only major browser that doesn't support beforeinstallprompt
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        // Check if we're on Android Chrome
-        const isAndroidChrome = /Android/.test(navigator.userAgent) && /Chrome/.test(navigator.userAgent);
+        const isSafari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
         
-        // Show fallback for mobile devices or if beforeinstallprompt hasn't fired
-        if (isMobile || isIOS || isAndroidChrome) {
-          console.log('📱 Showing fallback install prompt');
+        // Only show fallback for iOS Safari (which doesn't support native install prompt)
+        if (isIOS && isSafari) {
+          console.log('📱 iOS Safari detected - showing manual install instructions');
           setShowFallback(true);
+        } else {
+          // For other browsers, show the prompt anyway (they might support it)
+          // The button will trigger native prompt if available
+          console.log('📱 Showing install prompt (native prompt may be available)');
+          setShowPrompt(true);
         }
       }
-    }, 3000); // Wait 3 seconds before showing fallback
+    }, 5000); // Wait 5 seconds before showing fallback (give more time for beforeinstallprompt)
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -98,20 +100,25 @@ const PWAInstallPrompt: React.FC = () => {
 
   const handleInstallClick = async () => {
     if (deferredPrompt) {
-      // Use the native install prompt (Chrome, Edge, etc.)
+      // Use the native install prompt (Chrome, Edge, Opera, Samsung Internet, etc.)
       try {
+        console.log('📱 Triggering native install prompt');
         // Show the install prompt
         deferredPrompt.prompt();
 
         // Wait for the user to respond to the prompt
         const { outcome } = await deferredPrompt.userChoice;
 
+        console.log('📱 User choice:', outcome);
+
         if (outcome === 'accepted') {
+          console.log('📱 User accepted installation');
           setIsInstalled(true);
           setShowPrompt(false);
           setShowFallback(false);
         } else {
           // User dismissed the prompt
+          console.log('📱 User dismissed installation');
           setShowPrompt(false);
           setShowFallback(false);
         }
@@ -120,14 +127,36 @@ const PWAInstallPrompt: React.FC = () => {
         setDeferredPrompt(null);
       } catch (error) {
         console.error('Error showing install prompt:', error);
-        // Fallback to manual instructions
-        setShowFallback(true);
-        setShowPrompt(false);
+        // If native prompt fails, check if we're on iOS Safari
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const isSafari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
+        
+        if (isIOS && isSafari) {
+          // Show manual instructions for iOS Safari
+          setShowFallback(true);
+          setShowPrompt(false);
+        } else {
+          // For other browsers, just dismiss (they should have native prompt)
+          setShowPrompt(false);
+          setShowFallback(false);
+        }
       }
     } else {
-      // Fallback: Show manual installation instructions
-      setShowFallback(true);
-      setShowPrompt(false);
+      // No deferredPrompt available - check if we're on iOS Safari
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      const isSafari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
+      
+      if (isIOS && isSafari) {
+        // Show manual instructions for iOS Safari
+        setShowFallback(true);
+        setShowPrompt(false);
+      } else {
+        // For other browsers, the native prompt should be available
+        // Try to trigger browser's native install UI
+        console.log('📱 No deferredPrompt, but showing prompt anyway (browser may have native UI)');
+        // The browser might show its own install UI when user clicks
+        setShowPrompt(true);
+      }
     }
   };
 
@@ -182,14 +211,8 @@ const PWAInstallPrompt: React.FC = () => {
           )}
         </div>
         <div className="pwa-install-buttons">
-          {deferredPrompt ? (
-            <button
-              onClick={handleInstallClick}
-              className="pwa-install-button install"
-            >
-              Install
-            </button>
-          ) : (
+          {showFallback && !deferredPrompt ? (
+            // Manual instructions - just show "Got It" button
             <button
               onClick={handleDismiss}
               className="pwa-install-button install"
@@ -197,13 +220,23 @@ const PWAInstallPrompt: React.FC = () => {
             >
               Got It
             </button>
+          ) : (
+            // Native install button - always show "Install" button
+            <>
+              <button
+                onClick={handleInstallClick}
+                className="pwa-install-button install"
+              >
+                Install
+              </button>
+              <button
+                onClick={handleDismiss}
+                className="pwa-install-button dismiss"
+              >
+                Not Now
+              </button>
+            </>
           )}
-          <button
-            onClick={handleDismiss}
-            className="pwa-install-button dismiss"
-          >
-            Not Now
-          </button>
         </div>
       </div>
     </div>
