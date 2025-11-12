@@ -1,46 +1,152 @@
-# Getting Started with Create React App
+# 🕌 Tijaniyah Muslim Pro - Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Progressive Web App (PWA) version of the Tijaniyah Muslim Pro mobile application, built with React and TypeScript.
 
-## Available Scripts
+## 🌟 Features
 
-In the project directory, you can run:
+- **Prayer Times**: Accurate prayer times based on your location
+- **Qibla Compass**: Find the direction to Mecca
+- **Quran Reader**: Read and listen to the Holy Quran
+- **Duas & Supplications**: Collection of Islamic prayers
+- **Digital Tasbih**: Count your dhikr
+- **Wazifa Tracker**: Daily Islamic practices management
+- **Community**: Connect with fellow Muslims
+- **Islamic Journal**: Reflect on your spiritual journey
+- **Admin Dashboard**: Manage app content (for admins)
+- **And much more...**
 
-### `npm start`
+## 🚀 Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Node.js 16+ and npm
+- Git
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
+cd tijaniyah-muslim-pro-web
+```
 
-### `npm run build`
+2. Install dependencies:
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Create a `.env` file (optional, uses default API URL):
+```bash
+cp .env.example .env
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Start the development server:
+```bash
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The app will open at [http://localhost:3000](http://localhost:3000)
 
-### `npm run eject`
+## 📦 Building for Production
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm run build
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This creates an optimized production build in the `build` folder.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🌐 Deployment to Vercel
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Push your code to GitHub
+2. Import the project in Vercel
+3. Vercel will automatically detect the Create React App configuration
+4. The app will be deployed and accessible via a Vercel URL
 
-## Learn More
+### Environment Variables
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Set the following in Vercel dashboard:
+- `REACT_APP_API_URL`: Your backend API URL (default: Railway backend)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🗄️ Database
+
+This web app uses the **same database** as the mobile app:
+- **Backend API**: Railway PostgreSQL
+- **API URL**: `https://tijaniyahmuslimproappreact-production-1e25.up.railway.app`
+- All user data, authentication, and app state are shared between mobile and web
+
+## 📱 PWA Features
+
+- **Installable**: Users can install the app on their devices
+- **Offline Support**: Service worker caches resources for offline use
+- **Responsive Design**: Works on mobile, tablet, and desktop
+- **Fast Loading**: Optimized for performance
+
+## 🛠️ Tech Stack
+
+- **React 19** with TypeScript
+- **React Router** for navigation
+- **Create React App** for tooling
+- **Axios** for API calls
+- **Service Worker** for PWA functionality
+- **CSS3** for styling
+
+## 📁 Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── contexts/       # React contexts (Auth, Language, etc.)
+├── screens/        # Page components
+├── services/       # API services
+├── utils/          # Helper functions and theme
+├── types/          # TypeScript type definitions
+└── hooks/          # Custom React hooks
+```
+
+## 🔐 Authentication
+
+### Demo Accounts
+
+- **User**: `demo@tijaniyah.com` / `demo123`
+- **Admin**: `admin@tijaniyahpro.com` / `admin123`
+- **Moderator**: `moderator@tijaniyahpro.com` / `moderator123`
+
+## 🎨 Theme
+
+The app uses a dark teal color scheme inspired by Muslim Pro:
+- Background: `#052F2A`
+- Surface: `#0B3F39`
+- Accent: `#11C48D`
+- Primary: `#2E7D32`
+
+## 📝 Available Scripts
+
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm test` - Run tests
+- `npm run eject` - Eject from Create React App (irreversible)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📄 License
+
+This project is private and proprietary.
+
+## 🔗 Links
+
+- **Mobile App**: [React Native App Repository]
+- **Backend API**: [Railway Deployment]
+- **Web App**: [Vercel Deployment]
+
+## 📞 Support
+
+For issues or questions, please contact the development team.
+
+---
+
+Made with ❤️ for the Tijaniyah Muslim community
