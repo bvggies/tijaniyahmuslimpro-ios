@@ -1,0 +1,644 @@
+.home-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #052F2A 0%, #0B3F39 100%);
+  padding-bottom: 100px;
+}
+
+.home-header {
+  background: linear-gradient(180deg, #0B3F39 0%, #052F2A 100%);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.home-header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.home-logo-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.home-header-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.home-header-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 4px;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0;
+}
+
+.home-header-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 4px;
+}
+
+.home-header-avatar-wrapper {
+  margin-bottom: 4px;
+}
+
+.home-header-icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.home-header-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  text-align: center;
+}
+
+.home-greeting-location {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.home-greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.home-greeting-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #E7F5F1;
+  margin: 0 0 4px 0;
+  text-align: left;
+}
+
+.home-greeting-arabic {
+  font-size: 14px;
+  color: #BBE1D5;
+  margin: 0;
+  text-align: left;
+}
+
+.home-location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-location-flag {
+  font-size: 20px;
+}
+
+.home-location-text {
+  font-size: 12px;
+  color: #BBE1D5;
+  text-align: right;
+}
+
+.home-scroll-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.home-calendar-card {
+  background: linear-gradient(135deg, #CDE8DC 0%, #BBE1D5 100%);
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.home-calendar-card:hover {
+  transform: translateY(-2px);
+}
+
+.home-calendar-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.home-calendar-icon {
+  font-size: 24px;
+}
+
+.home-calendar-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #052F2A;
+  margin: 0;
+}
+
+.home-calendar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.home-hijri-date {
+  font-size: 20px;
+  font-weight: 700;
+  color: #052F2A;
+  margin: 0;
+}
+
+.home-gregorian-date {
+  font-size: 14px;
+  color: #052F2A;
+  margin: 0;
+}
+
+.home-day-name {
+  font-size: 14px;
+  color: #052F2A;
+  margin: 0;
+}
+
+.home-next-prayer-card {
+  background: linear-gradient(135deg, #00BFA5 0%, #11C48D 100%, #1BBFA7 100%);
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-next-prayer-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.home-next-prayer-header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-next-prayer-icon {
+  font-size: 24px;
+}
+
+.home-next-prayer-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.home-next-prayer-label-arabic {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.home-next-prayer-badge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+.home-next-prayer-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.home-next-prayer-name-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.home-next-prayer-name {
+  font-size: 32px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.home-next-prayer-name-arabic {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.home-next-prayer-time-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home-next-prayer-time-display {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-next-prayer-time-large {
+  font-size: 36px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.home-next-prayer-countdown {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.home-next-prayer-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.home-section {
+  margin-bottom: 24px;
+}
+
+.home-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #E7F5F1;
+  margin: 0 0 4px 0;
+}
+
+.home-section-title-arabic {
+  font-size: 14px;
+  color: #BBE1D5;
+  margin: 0 0 16px 0;
+}
+
+.home-prayer-times-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.home-prayer-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s;
+}
+
+.home-prayer-card-current {
+  border-width: 2px;
+  box-shadow: 0 4px 12px rgba(0, 191, 165, 0.3);
+}
+
+.home-prayer-icon-container {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.home-prayer-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.home-prayer-name-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.home-prayer-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #E7F5F1;
+}
+
+.home-prayer-name-arabic {
+  font-size: 14px;
+  color: #BBE1D5;
+}
+
+.home-prayer-time {
+  font-size: 18px;
+  font-weight: 600;
+  color: #E7F5F1;
+}
+
+.home-prayer-current-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+.home-mini-azan-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.home-mini-azan-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #E7F5F1;
+}
+
+.home-mini-azan-play {
+  background: #00BFA5;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-size: 12px;
+}
+
+.home-mini-azan-list {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.home-mini-azan-item {
+  flex: 1;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #BBE1D5;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.home-mini-azan-item-active {
+  background: #00BFA5;
+  color: #FFFFFF;
+  border-color: #00BFA5;
+}
+
+.home-quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.home-quick-action-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s;
+}
+
+.home-quick-action-card:hover {
+  transform: translateY(-4px);
+}
+
+.home-quick-action-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.home-quick-action-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #E7F5F1;
+  text-align: center;
+}
+
+.home-quick-action-title-arabic {
+  font-size: 12px;
+  color: #BBE1D5;
+  text-align: center;
+}
+
+.home-events-scroll {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.home-event-card {
+  min-width: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.home-event-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #E7F5F1;
+  margin: 0 0 4px 0;
+}
+
+.home-event-title-arabic {
+  font-size: 14px;
+  color: #BBE1D5;
+  margin: 0 0 8px 0;
+}
+
+.home-event-date {
+  font-size: 12px;
+  color: #BBE1D5;
+  margin: 0;
+}
+
+.home-hajj-quick-row {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.home-hajj-quick-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px;
+  color: #E7F5F1;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.home-hajj-quick-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.home-hajj-dropdown-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 12px;
+}
+
+.home-hajj-dropdown-card h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #E7F5F1;
+  margin: 0 0 8px 0;
+}
+
+.home-hajj-dropdown-card p {
+  font-size: 14px;
+  color: #BBE1D5;
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+}
+
+.home-hajj-dropdown-card button {
+  background: #00BFA5;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.home-reminder-card {
+  background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%, #CD853F 100%);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.home-reminder-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.home-reminder-icon {
+  font-size: 24px;
+}
+
+.home-reminder-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.home-reminder-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.home-reminder-text {
+  font-size: 14px;
+  color: #FFFFFF;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.home-reminder-source {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .home-quick-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 769px) {
+  .home-container {
+    padding-left: 270px;
+  }
+  
+  .home-quick-actions-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
