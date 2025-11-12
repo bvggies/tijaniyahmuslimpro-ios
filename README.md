@@ -76,6 +76,24 @@ This web app uses the **same database** as the mobile app:
 - **API URL**: `https://tijaniyahmuslimproappreact-production-1e25.up.railway.app`
 - All user data, authentication, and app state are shared between mobile and web
 
+**📖 For detailed database setup instructions, see:**
+- [DATABASE_CONNECTION.md](./DATABASE_CONNECTION.md) - Quick setup guide
+- [SHARED_DATABASE_SETUP.md](./SHARED_DATABASE_SETUP.md) - Comprehensive guide
+
+### Quick Setup
+
+1. Create `.env` file in the root directory:
+   ```env
+   REACT_APP_API_URL=https://tijaniyahmuslimproappreact-production-1e25.up.railway.app
+   ```
+
+2. Restart the development server:
+   ```bash
+   npm start
+   ```
+
+Both apps will now use the same database! ✅
+
 ## 📱 PWA Features
 
 - **Installable**: Users can install the app on their devices

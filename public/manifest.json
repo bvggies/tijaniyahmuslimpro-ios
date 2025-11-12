@@ -4,20 +4,21 @@
   "description": "Complete Islamic app with prayer times, Qibla, Quran, Duas, and Tijaniyah features",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
+      "src": "/assets/images/appicon.png",
       "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
+      "src": "/assets/images/appicon.png",
       "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/appicon.png",
+      "sizes": "144x144",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ],

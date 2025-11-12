@@ -1,102 +1,149 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import '../App.css';
+import { colors } from '../utils/theme';
+import './LoginScreen.css';
 
 const LoginScreen: React.FC = () => {
+  const { login, authState, clearError, isAdmin, isModerator } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, authState, isAdmin, isModerator } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Handle admin redirect after successful login
   useEffect(() => {
-    if (authState.isAuthenticated) {
-      if (isAdmin() || isModerator()) {
-        navigate('/admin');
-      } else {
-        navigate('/');
-      }
+    if (authState.isAuthenticated && authState.user && (isAdmin() || isModerator())) {
+      console.log('🔄 Admin user logged in, redirecting to admin panel...');
+      navigate('/admin');
+    } else if (authState.isAuthenticated) {
+      navigate('/');
     }
-  }, [authState.isAuthenticated, isAdmin, isModerator, navigate]);
+  }, [authState.isAuthenticated, authState.user, isAdmin, isModerator, navigate]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email.trim() || !password.trim()) {
+      alert('Please fill in all fields');
+      return;
+    }
+
+    setIsLoading(true);
     try {
-      await login({ email, password });
+      await login({ email: email.trim(), password });
+      // Navigation will be handled by the auth state change
     } catch (error) {
-      console.error('Login error:', error);
+      // Error is handled by the auth context
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  const handleForgotPassword = () => {
+    if (!email.trim()) {
+      alert('Email Required', 'Please enter your email address first');
+      return;
+    }
+    alert(`A password reset link has been sent to ${email}`);
+  };
+
   return (
-    <div className="App" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div className="container" style={{ maxWidth: '400px' }}>
-        <div className="card">
-          <h2 style={{ textAlign: 'center', marginBottom: '24px', color: '#11C48D' }}>
-            Login
-          </h2>
-
-          {authState.error && (
-            <div style={{ 
-              padding: '12px', 
-              backgroundColor: '#F44336', 
-              borderRadius: '8px', 
-              marginBottom: '16px',
-              color: '#FFFFFF'
-            }}>
-              {authState.error}
+    <div className="login-container">
+      <div className="login-gradient">
+        <div className="login-scroll-content">
+          {/* Header */}
+          <div className="login-header">
+            <div className="login-logo-container">
+              <img src="/assets/images/appicon.png" alt="App Icon" className="login-logo" />
             </div>
-          )}
+            <h1 className="login-title">Tijaniyah Muslim Pro</h1>
+            <p className="login-subtitle">Welcome back to your spiritual journey</p>
+          </div>
 
-          <form onSubmit={handleSubmit}>
-            <div style={{ marginBottom: '16px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', color: '#BBE1D5' }}>
-                Email
-              </label>
-              <input
-                type="email"
-                className="input"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                required
-              />
-            </div>
+          {/* Login Form */}
+          <div className="login-form-container">
+            <h2 className="login-form-title">Sign In</h2>
+            
+            {authState.error && (
+              <div className="login-error-container">
+                <span className="login-error-icon">⚠️</span>
+                <span className="login-error-text">{authState.error}</span>
+                <button onClick={clearError} className="login-error-close">×</button>
+              </div>
+            )}
 
-            <div style={{ marginBottom: '24px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', color: '#BBE1D5' }}>
-                Password
-              </label>
-              <input
-                type="password"
-                className="input"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                required
-              />
-            </div>
+            <form onSubmit={handleLogin}>
+              <div className="login-input-container">
+                <span className="login-input-icon">✉️</span>
+                <input
+                  type="email"
+                  className="login-input"
+                  placeholder="Email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoCapitalize="none"
+                  autoCorrect="off"
+                />
+              </div>
 
-            <button
-              type="submit"
-              className="btn btn-primary"
-              style={{ width: '100%', marginBottom: '16px' }}
-              disabled={authState.isLoading}
-            >
-              {authState.isLoading ? 'Logging in...' : 'Login'}
-            </button>
-          </form>
+              <div className="login-input-container">
+                <span className="login-input-icon">🔒</span>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  className="login-input"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoCapitalize="none"
+                  autoCorrect="off"
+                />
+                <button
+                  type="button"
+                  className="login-password-toggle"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? '👁️‍🗨️' : '👁️'}
+                </button>
+              </div>
 
-          <div style={{ textAlign: 'center', marginTop: '16px' }}>
-            <p style={{ color: '#BBE1D5', marginBottom: '8px' }}>
-              Don't have an account?{' '}
-              <Link to="/register" style={{ color: '#11C48D' }}>
-                Register
+              <button
+                type="button"
+                className="login-forgot-password"
+                onClick={handleForgotPassword}
+              >
+                Forgot Password?
+              </button>
+
+              <button
+                type="submit"
+                className={`login-button ${isLoading ? 'login-button-disabled' : ''}`}
+                disabled={isLoading}
+              >
+                <div className="login-button-gradient">
+                  {isLoading ? (
+                    <span className="login-button-text">Signing In...</span>
+                  ) : (
+                    <>
+                      <span>🔑</span>
+                      <span className="login-button-text">Sign In</span>
+                    </>
+                  )}
+                </div>
+              </button>
+
+              <div className="login-divider">
+                <div className="login-divider-line"></div>
+                <span className="login-divider-text">or</span>
+                <div className="login-divider-line"></div>
+              </div>
+
+              <Link to="/register" className="login-register-button">
+                <span className="login-register-text">
+                  Don't have an account? <span className="login-register-text-bold">Sign Up</span>
+                </span>
               </Link>
-            </p>
-            <Link to="/guest" style={{ color: '#11C48D' }}>
-              Continue as Guest
-            </Link>
+            </form>
           </div>
         </div>
       </div>
@@ -105,4 +152,3 @@ const LoginScreen: React.FC = () => {
 };
 
 export default LoginScreen;
-

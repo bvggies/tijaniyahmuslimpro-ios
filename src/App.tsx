@@ -13,6 +13,7 @@ import QiblaScreen from './screens/QiblaScreen';
 import QuranScreen from './screens/QuranScreen';
 import DuasScreen from './screens/DuasScreen';
 import ResponsiveNavigation from './components/ResponsiveNavigation';
+import PWAInstallPrompt from './components/PWAInstallPrompt';
 import TasbihScreen from './screens/TasbihScreen';
 import MoreFeaturesScreen from './screens/MoreFeaturesScreen';
 import MakkahLiveScreen from './screens/MakkahLiveScreen';
@@ -96,6 +97,7 @@ const AppRoutes: React.FC = () => {
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
     <ResponsiveNavigation />
+    <PWAInstallPrompt />
     </>
   );
 };

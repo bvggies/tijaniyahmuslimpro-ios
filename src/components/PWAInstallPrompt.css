@@ -1,0 +1,119 @@
+.pwa-install-prompt {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  max-width: 90%;
+  width: 400px;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateX(-50%) translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+.pwa-install-content {
+  background: linear-gradient(180deg, rgba(11, 63, 57, 0.95) 0%, rgba(5, 47, 42, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.pwa-install-icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.pwa-install-text {
+  text-align: center;
+}
+
+.pwa-install-text h3 {
+  color: #E7F5F1;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.pwa-install-text p {
+  color: #BBE1D5;
+  font-size: 14px;
+  margin: 0;
+}
+
+.pwa-install-buttons {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.pwa-install-button {
+  flex: 1;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pwa-install-button.install {
+  background: linear-gradient(135deg, #00BFA5 0%, #11C48D 100%);
+  color: #FFFFFF;
+}
+
+.pwa-install-button.install:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 191, 165, 0.4);
+}
+
+.pwa-install-button.dismiss {
+  background: rgba(255, 255, 255, 0.1);
+  color: #BBE1D5;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pwa-install-button.dismiss:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .pwa-install-prompt {
+    bottom: 120px;
+    width: calc(100% - 32px);
+    max-width: 400px;
+  }
+
+  .pwa-install-content {
+    padding: 16px;
+  }
+
+  .pwa-install-icon {
+    font-size: 40px;
+  }
+
+  .pwa-install-text h3 {
+    font-size: 16px;
+  }
+
+  .pwa-install-text p {
+    font-size: 13px;
+  }
+}
+

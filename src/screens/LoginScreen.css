@@ -1,0 +1,248 @@
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-gradient {
+  flex: 1;
+  background: linear-gradient(180deg, #052F2A 0%, #0B3F39 100%);
+  display: flex;
+  flex-direction: column;
+}
+
+.login-scroll-content {
+  flex: 1;
+  padding: 60px 24px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-logo-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  background-color: #CDE8DC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.login-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #E7F5F1;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.login-subtitle {
+  font-size: 16px;
+  color: #BBE1D5;
+  text-align: center;
+  margin: 0;
+}
+
+.login-form-container {
+  background-color: #0B3F39;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #E7F5F1;
+  text-align: center;
+  margin: 0 0 24px 0;
+}
+
+.login-error-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #FFE5E5;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.login-error-icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.login-error-text {
+  flex: 1;
+  color: #FF6B6B;
+  font-size: 14px;
+}
+
+.login-error-close {
+  background: none;
+  border: none;
+  color: #FF6B6B;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.login-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #052F2A;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  padding: 0 16px;
+  border: 1px solid #114C45;
+}
+
+.login-input-icon {
+  font-size: 20px;
+  margin-right: 12px;
+  color: #BBE1D5;
+}
+
+.login-input {
+  flex: 1;
+  padding: 16px 0;
+  font-size: 16px;
+  color: #E7F5F1;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.login-input::placeholder {
+  color: #BBE1D5;
+}
+
+.login-password-toggle {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #BBE1D5;
+}
+
+.login-forgot-password {
+  align-self: flex-end;
+  margin-bottom: 24px;
+  background: none;
+  border: none;
+  color: #00BFA5;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.login-button {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-button-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-button-gradient {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #00BFA5 0%, #11C48D 100%);
+  gap: 8px;
+}
+
+.login-button:disabled .login-button-gradient {
+  background: #114C45;
+}
+
+.login-button-text {
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.login-divider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.login-divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: #114C45;
+}
+
+.login-divider-text {
+  color: #BBE1D5;
+  font-size: 14px;
+  margin: 0 16px;
+}
+
+.login-register-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.login-register-text {
+  color: #BBE1D5;
+  font-size: 16px;
+  text-align: center;
+}
+
+.login-register-text-bold {
+  color: #00BFA5;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .login-scroll-content {
+    padding: 40px 16px 20px;
+  }
+
+  .login-form-container {
+    padding: 20px;
+  }
+}
+
