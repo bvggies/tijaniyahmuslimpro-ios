@@ -56,6 +56,26 @@
   margin: 0;
 }
 
+.pwa-install-instructions {
+  font-size: 12px;
+  margin-top: 8px;
+  color: #BBE1D5;
+  text-align: left;
+}
+
+.pwa-install-instructions ol {
+  color: #E7F5F1;
+}
+
+.pwa-install-instructions li {
+  margin-bottom: 8px;
+}
+
+.pwa-install-instructions strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
 .pwa-install-buttons {
   display: flex;
   gap: 12px;

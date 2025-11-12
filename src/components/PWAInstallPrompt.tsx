@@ -49,6 +49,20 @@ const PWAInstallPrompt: React.FC = () => {
       }
     }
 
+    // Detect iOS immediately
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const isSafari = /Safari/.test(navigator.userAgent) && !/Chrome|CriOS|FxiOS|OPiOS/.test(navigator.userAgent);
+    const isIOSDevice = isIOS && isSafari;
+
+    // For iOS Safari, show prompt immediately (no waiting)
+    if (isIOSDevice) {
+      console.log('📱 iOS Safari detected - showing install instructions immediately');
+      // Small delay to ensure page is loaded
+      setTimeout(() => {
+        setShowFallback(true);
+      }, 1000);
+    }
+
     // Listen for the beforeinstallprompt event (Chrome, Edge, Opera, Samsung Internet)
     const handleBeforeInstallPrompt = (e: Event) => {
       console.log('📱 beforeinstallprompt event fired');
@@ -58,6 +72,8 @@ const PWAInstallPrompt: React.FC = () => {
       setDeferredPrompt(e as BeforeInstallPromptEvent);
       // Show our custom install prompt
       setShowPrompt(true);
+      // Hide fallback if it was shown
+      setShowFallback(false);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -71,30 +87,25 @@ const PWAInstallPrompt: React.FC = () => {
       setShowFallback(false);
     });
 
-    // Fallback: Only show manual instructions for iOS Safari (which doesn't support beforeinstallprompt)
-    // For other browsers, wait longer to see if beforeinstallprompt fires
-    const fallbackTimer = setTimeout(() => {
-      if (!deferredPrompt && !isInstalled) {
-        // Check if we're on iOS (Safari) - the only major browser that doesn't support beforeinstallprompt
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        const isSafari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
-        
-        // Only show fallback for iOS Safari (which doesn't support native install prompt)
-        if (isIOS && isSafari) {
-          console.log('📱 iOS Safari detected - showing manual install instructions');
-          setShowFallback(true);
-        } else {
-          // For other browsers, show the prompt anyway (they might support it)
-          // The button will trigger native prompt if available
-          console.log('📱 Showing install prompt (native prompt may be available)');
-          setShowPrompt(true);
-        }
-      }
-    }, 5000); // Wait 5 seconds before showing fallback (give more time for beforeinstallprompt)
+    // Fallback for non-iOS browsers: wait a bit to see if beforeinstallprompt fires
+    let fallbackTimer: NodeJS.Timeout | null = null;
+    if (!isIOSDevice) {
+      fallbackTimer = setTimeout(() => {
+        setShowPrompt((prevShow) => {
+          if (!deferredPrompt && !isInstalled && !prevShow) {
+            console.log('📱 Showing install prompt (native prompt may be available)');
+            return true;
+          }
+          return prevShow;
+        });
+      }, 3000); // Wait 3 seconds for beforeinstallprompt
+    }
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-      clearTimeout(fallbackTimer);
+      if (fallbackTimer) {
+        clearTimeout(fallbackTimer);
+      }
     };
   }, [deferredPrompt, isInstalled]);
 
@@ -189,6 +200,7 @@ const PWAInstallPrompt: React.FC = () => {
   // Detect device type for instructions
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
   const isAndroid = /Android/.test(navigator.userAgent);
+  const isIPad = /iPad/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
   return (
     <div className="pwa-install-prompt">
@@ -197,9 +209,21 @@ const PWAInstallPrompt: React.FC = () => {
         <div className="pwa-install-text">
           <h3>Install Tijaniyah Muslim Pro</h3>
           {showFallback && !deferredPrompt ? (
-            <div style={{ fontSize: '12px', marginTop: '8px', color: '#BBE1D5' }}>
+            <div className="pwa-install-instructions">
               {isIOS ? (
-                <p>Tap the Share button <span style={{ fontSize: '16px' }}>⎋</span> and select "Add to Home Screen"</p>
+                <div>
+                  <p style={{ marginBottom: '12px', fontWeight: 600 }}>Follow these steps:</p>
+                  <ol style={{ textAlign: 'left', paddingLeft: '20px', margin: 0, fontSize: '13px', lineHeight: '1.8' }}>
+                    <li>Tap the <strong>Share</strong> button <span style={{ fontSize: '18px', verticalAlign: 'middle' }}>⎋</span> at the bottom of your screen</li>
+                    <li>Scroll down and tap <strong>"Add to Home Screen"</strong></li>
+                    <li>Tap <strong>"Add"</strong> in the top right corner</li>
+                  </ol>
+                  {isIPad && (
+                    <p style={{ marginTop: '12px', fontSize: '12px', fontStyle: 'italic' }}>
+                      On iPad, the Share button is at the top of the screen
+                    </p>
+                  )}
+                </div>
               ) : isAndroid ? (
                 <p>Tap the menu <span style={{ fontSize: '16px' }}>⋮</span> and select "Install app" or "Add to Home screen"</p>
               ) : (
@@ -212,7 +236,7 @@ const PWAInstallPrompt: React.FC = () => {
         </div>
         <div className="pwa-install-buttons">
           {showFallback && !deferredPrompt ? (
-            // Manual instructions - just show "Got It" button
+            // Manual instructions - show "Got It" button
             <button
               onClick={handleDismiss}
               className="pwa-install-button install"
