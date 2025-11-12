@@ -26,7 +26,7 @@ A Progressive Web App (PWA) version of the Tijaniyah Muslim Pro mobile applicati
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/bvggies/tijaniyahmuslimpro-ios.git
 cd tijaniyah-muslim-pro-web
 ```
 
@@ -57,15 +57,17 @@ This creates an optimized production build in the `build` folder.
 
 ## 🌐 Deployment to Vercel
 
-1. Push your code to GitHub
-2. Import the project in Vercel
-3. Vercel will automatically detect the Create React App configuration
-4. The app will be deployed and accessible via a Vercel URL
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
 
-### Environment Variables
+Quick steps:
+1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
+2. Click "Add New Project"
+3. Import repository: `bvggies/tijaniyahmuslimpro-ios`
+4. Vercel will auto-detect Create React App configuration
+5. Add environment variable: `REACT_APP_API_URL` = `https://tijaniyahmuslimproappreact-production-1e25.up.railway.app`
+6. Click "Deploy"
 
-Set the following in Vercel dashboard:
-- `REACT_APP_API_URL`: Your backend API URL (default: Railway backend)
+The app will be automatically deployed and accessible via a Vercel URL.
 
 ## 🗄️ Database
 
@@ -139,9 +141,9 @@ This project is private and proprietary.
 
 ## 🔗 Links
 
-- **Mobile App**: [React Native App Repository]
-- **Backend API**: [Railway Deployment]
-- **Web App**: [Vercel Deployment]
+- **GitHub Repository**: https://github.com/bvggies/tijaniyahmuslimpro-ios
+- **Backend API**: https://tijaniyahmuslimproappreact-production-1e25.up.railway.app
+- **Web App**: [Vercel Deployment - Coming Soon]
 
 ## 📞 Support
 
