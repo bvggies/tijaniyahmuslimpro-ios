@@ -25,7 +25,6 @@ const ResponsiveNavigation: React.FC = () => {
   const navigate = useNavigate();
   const { authState, logout, isAdmin } = useAuth();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Hide navigation on login/register pages
   const hideNavPaths = ['/login', '/register'];
@@ -33,11 +32,7 @@ const ResponsiveNavigation: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
-      if (!mobile) {
-        setSidebarOpen(false);
-      }
+      setIsMobile(window.innerWidth < 768);
     };
 
     window.addEventListener('resize', handleResize);
@@ -61,7 +56,7 @@ const ResponsiveNavigation: React.FC = () => {
         <div className="glass-nav-blur">
           <div className="glass-nav-gradient">
             <div className="glass-nav-bar">
-              {navItems.slice(0, 5).map((item) => {
+              {navItems.map((item) => {
                 const isActive = location.pathname === item.path;
                 
                 return (
@@ -77,76 +72,9 @@ const ResponsiveNavigation: React.FC = () => {
                   </Link>
                 );
               })}
-              <button
-                onClick={() => setSidebarOpen(true)}
-                className="glass-nav-item glass-nav-more-button"
-              >
-                <div className="glass-nav-icon-container">
-                  <span className="glass-nav-icon">☰</span>
-                </div>
-                <span className="glass-nav-label">More</span>
-              </button>
             </div>
           </div>
         </div>
-
-        {/* Mobile Sidebar Overlay */}
-        {sidebarOpen && (
-          <>
-            <div
-              className="glass-nav-overlay"
-              onClick={() => setSidebarOpen(false)}
-            />
-            <aside className="glass-nav-sidebar">
-              <div className="glass-nav-sidebar-header">
-                <h3>Menu</h3>
-                <button
-                  onClick={() => setSidebarOpen(false)}
-                  className="glass-nav-close-button"
-                >
-                  ✕
-                </button>
-              </div>
-              {navItems.slice(5).map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setSidebarOpen(false)}
-                  className={`glass-nav-sidebar-item ${location.pathname === item.path ? 'active' : ''}`}
-                >
-                  <span className="glass-nav-sidebar-icon">{item.icon}</span>
-                  <span>{item.label}</span>
-                </Link>
-              ))}
-              {authState.isAuthenticated && (
-                <div className="glass-nav-sidebar-footer">
-                  <Link
-                    to="/profile"
-                    onClick={() => setSidebarOpen(false)}
-                    className="glass-nav-sidebar-link"
-                  >
-                    👤 Profile
-                  </Link>
-                  {isAdmin() && (
-                    <Link
-                      to="/admin"
-                      onClick={() => setSidebarOpen(false)}
-                      className="glass-nav-sidebar-link admin-link"
-                    >
-                      ⚙️ Admin Panel
-                    </Link>
-                  )}
-                  <button
-                    onClick={handleLogout}
-                    className="glass-nav-sidebar-link logout-button"
-                  >
-                    Logout
-                  </button>
-                </div>
-              )}
-            </aside>
-          </>
-        )}
       </nav>
     );
   }
