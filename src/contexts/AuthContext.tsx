@@ -84,10 +84,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   // Load user from storage on app start
   useEffect(() => {
     const initializeApp = async () => {
+      await createAdminUsersIfNeeded(); // Create admin users first
+      await initializeDemoAccount(); // Initialize demo account
       await loadStoredToken();
+      await validateStoredToken(); // Validate token before loading user
       await loadStoredUser();
     };
     initializeApp();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadStoredUser = async () => {
@@ -153,6 +157,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         console.log('⚠️ Backend authentication failed:', backendError.message);
         
         // Fallback to local storage for demo accounts
+        // Ensure demo users exist before checking
+        await createAdminUsersIfNeeded();
+        await initializeDemoAccount();
+        
         const users = getStoredUsers();
         const user = users.find(u => u.email.toLowerCase() === credentials.email.toLowerCase());
 
@@ -160,7 +168,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           throw new Error('User not found. Please check your email or register.');
         }
 
-        // Special handling for demo accounts
+        // Special handling for demo accounts - check password
         if (user.email === 'demo@tijaniyah.com' && credentials.password !== 'demo123') {
           throw new Error('Invalid password for demo account. Use: demo123');
         }
@@ -172,6 +180,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         if (user.email === 'moderator@tijaniyahpro.com' && credentials.password !== 'moderator123') {
           throw new Error('Invalid password for moderator account. Use: moderator123');
         }
+
+        // For other users, check if they have a password stored (for local accounts)
+        // If no password check is needed, allow login
 
         // Update last login
         const updatedUser = {
@@ -342,6 +353,140 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     } catch (error) {
       console.error('Error loading stored users:', error);
       return [];
+    }
+  };
+
+  const storeUsers = (users: User[]) => {
+    try {
+      localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
+    } catch (error) {
+      console.error('Error storing users:', error);
+    }
+  };
+
+  const createAdminUsersIfNeeded = async () => {
+    try {
+      const users = getStoredUsers();
+      let updated = false;
+
+      // Create admin user if it doesn't exist
+      const adminUserExists = users.find(u => u.email === 'admin@tijaniyahpro.com');
+      if (!adminUserExists) {
+        const adminUser: User = {
+          id: 'admin-user-001',
+          email: 'admin@tijaniyahpro.com',
+          name: 'Super Administrator',
+          phone: '+233 558415813',
+          role: 'super_admin',
+          location: {
+            city: 'Accra',
+            country: 'Ghana',
+          },
+          preferences: {
+            prayerMethod: 'MWL',
+            language: 'en',
+            notifications: true,
+          },
+          createdAt: new Date().toISOString(),
+          lastLogin: new Date().toISOString(),
+        };
+        users.push(adminUser);
+        updated = true;
+      }
+
+      // Create moderator user if it doesn't exist
+      const moderatorUserExists = users.find(u => u.email === 'moderator@tijaniyahpro.com');
+      if (!moderatorUserExists) {
+        const moderatorUser: User = {
+          id: 'moderator-user-001',
+          email: 'moderator@tijaniyahpro.com',
+          name: 'Moderator',
+          phone: '+233 558415813',
+          role: 'moderator',
+          location: {
+            city: 'Accra',
+            country: 'Ghana',
+          },
+          preferences: {
+            prayerMethod: 'MWL',
+            language: 'en',
+            notifications: true,
+          },
+          createdAt: new Date().toISOString(),
+          lastLogin: new Date().toISOString(),
+        };
+        users.push(moderatorUser);
+        updated = true;
+      }
+
+      if (updated) {
+        storeUsers(users);
+        console.log('✅ Admin users initialized');
+      }
+    } catch (error) {
+      console.error('Error creating admin users:', error);
+    }
+  };
+
+  const initializeDemoAccount = async () => {
+    try {
+      const users = getStoredUsers();
+      const demoUserExists = users.find(u => u.email === 'demo@tijaniyah.com');
+      
+      if (!demoUserExists) {
+        const demoUser: User = {
+          id: 'demo-user-001',
+          email: 'demo@tijaniyah.com',
+          name: 'Demo User',
+          phone: '+233 558415813',
+          role: 'user',
+          location: {
+            city: 'Accra',
+            country: 'Ghana',
+          },
+          preferences: {
+            prayerMethod: 'MWL',
+            language: 'en',
+            notifications: true,
+          },
+          createdAt: new Date().toISOString(),
+          lastLogin: new Date().toISOString(),
+        };
+        
+        users.push(demoUser);
+        storeUsers(users);
+        console.log('✅ Demo account initialized');
+      }
+    } catch (error) {
+      console.error('Error initializing demo account:', error);
+    }
+  };
+
+  const validateStoredToken = async () => {
+    try {
+      const token = localStorage.getItem('tijaniyah_auth_token');
+      if (!token) {
+        return; // No token to validate
+      }
+
+      // Try to validate token with backend
+      try {
+        await api.testAuth();
+        console.log('✅ Stored token is valid');
+      } catch (error: any) {
+        // Token is invalid, clear it
+        console.log('⚠️ Stored token is invalid, clearing...');
+        await clearToken();
+        
+        // Also clear stored user if token is invalid
+        const storedUser = localStorage.getItem(AUTH_STORAGE_KEY);
+        if (storedUser) {
+          console.log('⚠️ Clearing stored user due to invalid token');
+          removeStoredUser();
+        }
+      }
+    } catch (error) {
+      console.error('Error validating token:', error);
     }
   };
 
