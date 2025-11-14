@@ -27,8 +27,8 @@ const ResponsiveNavigation: React.FC = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   // Hide navigation on login/register pages
-  const hideNavPaths = ['/login', '/register'];
-  const shouldHideNav = hideNavPaths.includes(location.pathname) || !authState.isAuthenticated;
+  const hideNavPaths = ['/login', '/register', '/guest'];
+  const shouldHideNav = hideNavPaths.includes(location.pathname) || (!authState.isAuthenticated && !authState.isGuest);
 
   useEffect(() => {
     const handleResize = () => {
