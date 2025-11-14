@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { getQiblaDirection } from '../services/prayerService';
 import LocationService, { LocationData } from '../services/locationService';
 import '../App.css';
+import './QiblaScreen.css';
 
 const KAABA_LAT = 21.4225;
 const KAABA_LNG = 39.8262;

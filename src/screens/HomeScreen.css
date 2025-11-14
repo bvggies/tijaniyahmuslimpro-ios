@@ -1,15 +1,30 @@
 .home-container {
   min-height: 100vh;
-  background: linear-gradient(180deg, #052F2A 0%, #0B3F39 100%);
+  background: linear-gradient(180deg, #052F2A 0%, #0B3F39 50%, #114C45 100%);
   padding-bottom: 100px;
+  animation: home-fade-in 0.5s ease-out;
+}
+
+@keyframes home-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .home-header {
-  background: linear-gradient(180deg, #0B3F39 0%, #052F2A 100%);
+  background: linear-gradient(135deg, #0B3F39 0%, #052F2A 100%);
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 20px;
   padding-right: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
 }
 
 .home-header-content {
@@ -49,6 +64,13 @@
   border: none;
   cursor: pointer;
   padding: 8px 4px;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.home-header-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 .home-header-avatar-wrapper {
@@ -123,15 +145,19 @@
 }
 
 .home-calendar-card {
-  background: linear-gradient(135deg, #CDE8DC 0%, #BBE1D5 100%);
+  background: linear-gradient(135deg, rgba(205, 232, 220, 0.95) 0%, rgba(187, 225, 213, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   padding: 20px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .home-calendar-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .home-calendar-header {
@@ -184,6 +210,17 @@
   padding: 20px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 8px 24px rgba(17, 196, 141, 0.4);
+  animation: prayer-card-pulse 3s ease-in-out infinite;
+}
+
+@keyframes prayer-card-pulse {
+  0%, 100% {
+    box-shadow: 0 8px 24px rgba(17, 196, 141, 0.4);
+  }
+  50% {
+    box-shadow: 0 12px 32px rgba(17, 196, 141, 0.6);
+  }
 }
 
 .home-next-prayer-header {
@@ -322,16 +359,33 @@
   flex-direction: row;
   align-items: center;
   gap: 16px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
   border-radius: 16px;
   padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.home-prayer-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(4px);
 }
 
 .home-prayer-card-current {
   border-width: 2px;
   box-shadow: 0 4px 12px rgba(0, 191, 165, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  animation: current-prayer-glow 2s ease-in-out infinite;
+}
+
+@keyframes current-prayer-glow {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(0, 191, 165, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(0, 191, 165, 0.5);
+  }
 }
 
 .home-prayer-icon-container {
@@ -450,17 +504,38 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
   border-radius: 16px;
   padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   text-decoration: none;
   color: inherit;
-  transition: transform 0.2s;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-quick-action-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.home-quick-action-card:hover::before {
+  left: 100%;
 }
 
 .home-quick-action-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .home-quick-action-icon {
@@ -582,9 +657,18 @@
 }
 
 .home-reminder-card {
-  background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%, #CD853F 100%);
+  background: linear-gradient(135deg, rgba(139, 69, 19, 0.95) 0%, rgba(210, 105, 30, 0.95) 100%, rgba(205, 133, 63, 0.95) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.home-reminder-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .home-reminder-header {

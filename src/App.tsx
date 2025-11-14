@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { LanguageProvider } from './contexts/LanguageContext';
@@ -14,6 +14,7 @@ import QuranScreen from './screens/QuranScreen';
 import DuasScreen from './screens/DuasScreen';
 import ResponsiveNavigation from './components/ResponsiveNavigation';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
+import SplashScreen from './components/SplashScreen';
 import TasbihScreen from './screens/TasbihScreen';
 import MoreFeaturesScreen from './screens/MoreFeaturesScreen';
 import MakkahLiveScreen from './screens/MakkahLiveScreen';
@@ -40,6 +41,11 @@ import ZakatCalculatorScreen from './screens/ZakatCalculatorScreen';
 import NotificationSettingsScreen from './screens/NotificationSettingsScreen';
 import TijaniyaLazimScreen from './screens/TijaniyaLazimScreen';
 import ZikrJummaScreen from './screens/ZikrJummaScreen';
+import ChatScreen from './screens/ChatScreen';
+import GuestModeScreen from './screens/GuestModeScreen';
+import ResourcesForBeginnersScreen from './screens/ResourcesForBeginnersScreen';
+import ProofOfTasawwufPart1Screen from './screens/ProofOfTasawwufPart1Screen';
+import TijaniyaFiqhScreen from './screens/TijaniyaFiqhScreen';
 import './App.css';
 
 // Protected Route Component
@@ -83,7 +89,7 @@ const AppRoutes: React.FC = () => {
         <Routes>
           <Route path="/login" element={<GuestRoute><LoginScreen /></GuestRoute>} />
           <Route path="/register" element={<GuestRoute><RegisterScreen /></GuestRoute>} />
-          <Route path="/guest" element={<div className="container"><h1>Guest Mode</h1></div>} />
+          <Route path="/guest" element={<GuestModeScreen />} />
       <Route path="/" element={<ProtectedRoute><HomeScreen /></ProtectedRoute>} />
       <Route path="/prayer-times" element={<ProtectedRoute><PrayerTimesScreen /></ProtectedRoute>} />
       <Route path="/qibla" element={<ProtectedRoute><QiblaScreen /></ProtectedRoute>} />
@@ -102,7 +108,7 @@ const AppRoutes: React.FC = () => {
       <Route path="/ai-noor" element={<ProtectedRoute><AINoorScreen /></ProtectedRoute>} />
       <Route path="/donate" element={<ProtectedRoute><DonateScreen /></ProtectedRoute>} />
       <Route path="/mosque" element={<ProtectedRoute><MosqueScreen /></ProtectedRoute>} />
-      <Route path="/tijaniya-fiqh" element={<ProtectedRoute><div className="container"><h1>Tijaniya Fiqh (Coming Soon)</h1></div></ProtectedRoute>} />
+      <Route path="/tijaniya-fiqh" element={<ProtectedRoute><TijaniyaFiqhScreen /></ProtectedRoute>} />
       <Route path="/tijaniya-lazim" element={<ProtectedRoute><TijaniyaLazimScreen /></ProtectedRoute>} />
       <Route path="/lazim-tracker" element={<ProtectedRoute><LazimScreen /></ProtectedRoute>} />
       <Route path="/hajj" element={<ProtectedRoute><HajjScreen /></ProtectedRoute>} />
@@ -110,14 +116,16 @@ const AppRoutes: React.FC = () => {
       <Route path="/hajj-journey" element={<ProtectedRoute><HajjJourneyScreen /></ProtectedRoute>} />
       <Route path="/zakat-calculator" element={<ProtectedRoute><ZakatCalculatorScreen /></ProtectedRoute>} />
       <Route path="/notifications" element={<ProtectedRoute><NotificationSettingsScreen /></ProtectedRoute>} />
-      <Route path="/resources-beginners" element={<ProtectedRoute><div className="container"><h1>Resources for Beginners (Coming Soon)</h1></div></ProtectedRoute>} />
-      <Route path="/proof-tasawwuf" element={<ProtectedRoute><div className="container"><h1>Proof of Tasawwuf Part 1 (Coming Soon)</h1></div></ProtectedRoute>} />
+      <Route path="/resources-beginners" element={<ProtectedRoute><ResourcesForBeginnersScreen /></ProtectedRoute>} />
+      <Route path="/proof-tasawwuf" element={<ProtectedRoute><ProofOfTasawwufPart1Screen /></ProtectedRoute>} />
       <Route path="/zikr-jumma" element={<ProtectedRoute><ZikrJummaScreen /></ProtectedRoute>} />
       <Route path="/journal" element={<ProtectedRoute><JournalScreen /></ProtectedRoute>} />
       <Route path="/scholars" element={<ProtectedRoute><ScholarsScreen /></ProtectedRoute>} />
       <Route path="/scholar/:id" element={<ProtectedRoute><ScholarDetailScreen /></ProtectedRoute>} />
       <Route path="/settings" element={<ProtectedRoute><SettingsScreen /></ProtectedRoute>} />
       <Route path="/community" element={<ProtectedRoute><CommunityScreen /></ProtectedRoute>} />
+      <Route path="/chat" element={<ProtectedRoute><ChatScreen /></ProtectedRoute>} />
+      <Route path="/chat/:conversationId" element={<ProtectedRoute><ChatScreen /></ProtectedRoute>} />
       <Route path="/admin" element={<ProtectedRoute><div className="container"><h1>Admin Dashboard (Coming Soon)</h1></div></ProtectedRoute>} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
@@ -128,8 +136,11 @@ const AppRoutes: React.FC = () => {
 };
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
     <Router>
+      {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
       <LanguageProvider>
         <TimeFormatProvider>
           <IslamicCalendarProvider>

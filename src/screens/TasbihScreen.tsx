@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../App.css';
+import './TasbihScreen.css';
 
 interface DhikrOption {
   arabic: string;

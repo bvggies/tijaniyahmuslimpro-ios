@@ -1,0 +1,301 @@
+.tasbih-screen {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #052F2A 0%, #0B3F39 50%, #114C45 100%);
+  padding-bottom: 80px;
+}
+
+.tasbih-header {
+  background: linear-gradient(135deg, #0B3F39 0%, #052F2A 100%);
+  padding: 40px 20px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tasbih-header-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #E7F5F1;
+  margin-bottom: 8px;
+}
+
+.tasbih-header-subtitle {
+  font-size: 14px;
+  color: #BBE1D5;
+}
+
+.tasbih-dhikr-container {
+  padding: 20px;
+  padding-bottom: 12px;
+}
+
+.tasbih-dhikr-title {
+  font-size: 18px;
+  color: #E7F5F1;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.tasbih-dhikr-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tasbih-dhikr-card {
+  min-width: 200px;
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tasbih-dhikr-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tasbih-dhikr-card.selected {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border-width: 2px;
+}
+
+.tasbih-dhikr-arabic {
+  font-size: 20px;
+  color: #FFFFFF;
+  text-align: right;
+  margin-bottom: 8px;
+  font-family: 'Amiri', 'Arabic Typesetting', serif;
+  direction: rtl;
+}
+
+.tasbih-dhikr-transliteration {
+  font-size: 14px;
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.tasbih-dhikr-meaning {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tasbih-counter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  min-height: 400px;
+}
+
+.tasbih-counter-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  user-select: none;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.tasbih-counter-circle:active {
+  transform: scale(0.95);
+}
+
+.tasbih-counter-number {
+  font-size: 64px;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tasbih-counter-target {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 8px;
+}
+
+.tasbih-current-dhikr {
+  margin-top: 32px;
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  min-width: 300px;
+}
+
+.tasbih-current-arabic {
+  font-size: 24px;
+  color: #E7F5F1;
+  text-align: right;
+  margin-bottom: 8px;
+  font-family: 'Amiri', 'Arabic Typesetting', serif;
+  direction: rtl;
+}
+
+.tasbih-current-transliteration {
+  font-size: 16px;
+  color: #BBE1D5;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.tasbih-current-meaning {
+  font-size: 14px;
+  color: #9E9E9E;
+}
+
+.tasbih-round-info {
+  margin-top: 24px;
+  display: flex;
+  gap: 24px;
+  text-align: center;
+}
+
+.tasbih-round-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.tasbih-round-label {
+  font-size: 12px;
+  color: #9E9E9E;
+  margin-bottom: 4px;
+}
+
+.tasbih-round-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #11C48D;
+}
+
+.tasbih-target-container {
+  padding: 20px;
+}
+
+.tasbih-target-title {
+  font-size: 16px;
+  color: #E7F5F1;
+  margin-bottom: 12px;
+}
+
+.tasbih-target-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tasbih-target-button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  color: #BBE1D5;
+}
+
+.tasbih-target-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.tasbih-target-button.active {
+  background: linear-gradient(135deg, #11C48D 0%, #00BFA5 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(17, 196, 141, 0.3);
+}
+
+.tasbih-actions {
+  padding: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.tasbih-reset-button {
+  min-width: 120px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  color: #E7F5F1;
+}
+
+.tasbih-reset-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.tasbih-instructions {
+  margin: 20px;
+  margin-top: 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.tasbih-instructions-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #E7F5F1;
+  margin-bottom: 12px;
+}
+
+.tasbih-instructions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tasbih-instructions-item {
+  font-size: 14px;
+  color: #BBE1D5;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.tasbih-instructions-item strong {
+  color: #E7F5F1;
+}
+
+@media (max-width: 768px) {
+  .tasbih-counter-circle {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .tasbih-counter-number {
+    font-size: 56px;
+  }
+  
+  .tasbih-dhikr-card {
+    min-width: 160px;
+  }
+  
+  .tasbih-current-dhikr {
+    min-width: auto;
+    width: 100%;
+  }
+}
+

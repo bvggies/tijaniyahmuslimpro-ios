@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../App.css';
+import './AzanScreen.css';
 
 interface AzanOption {
   id: string;

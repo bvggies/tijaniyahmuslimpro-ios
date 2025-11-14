@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import './TijaniyahFeaturesScreen.css';
 
 const TijaniyahFeaturesScreen: React.FC = () => {
   const navigate = useNavigate();

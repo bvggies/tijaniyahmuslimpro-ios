@@ -1,0 +1,392 @@
+.qibla-screen {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #052F2A 0%, #0B3F39 50%, #114C45 100%);
+  padding-bottom: 80px;
+}
+
+.qibla-header {
+  background: linear-gradient(135deg, #00BFA5 0%, #11C48D 100%);
+  padding: 40px 20px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.qibla-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qibla-header-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.qibla-header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.qibla-header-button {
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.qibla-header-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.qibla-mode-selector {
+  display: flex;
+  margin: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.qibla-mode-button {
+  flex: 1;
+  padding: 12px 8px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: #BBE1D5;
+}
+
+.qibla-mode-button.active {
+  background: #00BFA5;
+  color: #FFFFFF;
+}
+
+.qibla-compass-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qibla-compass-wrapper {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.qibla-compass {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 4px solid #00BFA5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.qibla-direction-marker {
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background: #114C45;
+  top: 10px;
+  transform-origin: 50% 50%;
+}
+
+.qibla-direction-label {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: #052F2A;
+}
+
+.qibla-needle {
+  position: absolute;
+  width: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.qibla-needle-top {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 20px solid #FF4444;
+}
+
+.qibla-needle-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 15px solid #CCCCCC;
+}
+
+.qibla-kaaba-icon {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding: 10px;
+  border: 3px solid #8B4513;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50px;
+  z-index: 20;
+}
+
+.qibla-kaaba-icon-text {
+  font-size: 11px;
+  font-weight: bold;
+  color: #8B4513;
+  margin-top: 3px;
+}
+
+.qibla-center-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #00BFA5;
+  border: 2px solid #FFFFFF;
+  z-index: 15;
+}
+
+.qibla-direction-text {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.qibla-direction-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #E7F5F1;
+}
+
+.qibla-direction-label-text {
+  font-size: 16px;
+  color: #BBE1D5;
+  margin-top: 4px;
+}
+
+.qibla-controls {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.qibla-control-button {
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  color: #BBE1D5;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.qibla-control-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.qibla-info-container {
+  padding: 20px;
+}
+
+.qibla-info-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.qibla-info-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #E7F5F1;
+  margin-bottom: 16px;
+}
+
+.qibla-info-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.qibla-info-icon {
+  font-size: 20px;
+}
+
+.qibla-info-content {
+  flex: 1;
+}
+
+.qibla-info-label {
+  font-size: 12px;
+  color: #BBE1D5;
+  margin-bottom: 2px;
+}
+
+.qibla-info-value {
+  font-size: 16px;
+  color: #E7F5F1;
+  font-weight: 500;
+}
+
+.qibla-kaaba-card {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.qibla-kaaba-icon-large {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background: #E8F5E8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+.qibla-kaaba-info {
+  flex: 1;
+}
+
+.qibla-kaaba-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #E7F5F1;
+  margin-bottom: 4px;
+}
+
+.qibla-kaaba-location {
+  font-size: 16px;
+  color: #BBE1D5;
+  margin-bottom: 2px;
+}
+
+.qibla-kaaba-coords {
+  font-size: 14px;
+  color: #BBE1D5;
+}
+
+.qibla-facts-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #E7F5F1;
+  margin-bottom: 8px;
+}
+
+.qibla-facts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.qibla-fact-item {
+  font-size: 14px;
+  color: #BBE1D5;
+  margin-bottom: 4px;
+  line-height: 20px;
+}
+
+.qibla-guide-card {
+  margin: 20px;
+  margin-top: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.qibla-guide-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #E7F5F1;
+  margin-bottom: 16px;
+}
+
+.qibla-guide-section {
+  margin-bottom: 16px;
+}
+
+.qibla-guide-section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #E7F5F1;
+  margin-bottom: 8px;
+}
+
+.qibla-guide-text {
+  font-size: 14px;
+  color: #BBE1D5;
+  line-height: 20px;
+}
+
+.qibla-guide-list {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.qibla-guide-list-item {
+  font-size: 14px;
+  color: #BBE1D5;
+  margin-bottom: 8px;
+  line-height: 20px;
+}
+
+.qibla-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  color: #BBE1D5;
+}
+
+@media (max-width: 768px) {
+  .qibla-compass-wrapper {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .qibla-direction-value {
+    font-size: 28px;
+  }
+}
+

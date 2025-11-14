@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import '../App.css';
+import './ProfileScreen.css';
 
 const ProfileScreen: React.FC = () => {
   const { authState, updateProfile, logout } = useAuth();

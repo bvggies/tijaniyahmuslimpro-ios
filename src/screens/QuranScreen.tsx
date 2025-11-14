@@ -11,6 +11,7 @@ import {
   QuranVerse,
 } from '../services/quranService';
 import '../App.css';
+import './QuranScreen.css';
 
 const QuranScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -123,42 +124,27 @@ const QuranScreen: React.FC = () => {
 
   if (isLoadingChapters) {
     return (
-      <div className="App">
-        <div className="flex-center" style={{ minHeight: '100vh' }}>
+      <div className="quran-screen">
+        <div className="quran-loading">
           <div className="spinner"></div>
-          <p style={{ marginTop: '16px', color: '#BBE1D5' }}>Loading Quran...</p>
+          <p>Loading Quran...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="App">
+    <div className="quran-screen">
       {/* Header */}
-      <div style={{
-        background: 'linear-gradient(135deg, #0B3F39 0%, #052F2A 100%)',
-        paddingTop: '40px',
-        paddingBottom: '20px',
-        paddingLeft: '20px',
-        paddingRight: '20px',
-      }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-          <h1 style={{ fontSize: '28px', fontWeight: 'bold', color: '#E7F5F1' }}>
+      <div className="quran-header">
+        <div className="quran-header-content">
+          <h1 className="quran-header-title">
             {viewMode === 'verses' ? 'Quran' : viewMode === 'search' ? 'Search Results' : 'Quran'}
           </h1>
           {viewMode !== 'chapters' && (
             <button
               onClick={goBack}
-              style={{
-                padding: '8px 16px',
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: 'none',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                color: '#E7F5F1',
-                fontSize: '14px',
-                fontWeight: '600',
-              }}
+              className="quran-back-button"
             >
               ← Back
             </button>
@@ -166,86 +152,48 @@ const QuranScreen: React.FC = () => {
         </div>
 
         {/* Search Bar */}
-        <input
-          type="text"
-          className="input"
-          placeholder="Search chapters or verses..."
-          value={searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
-          style={{
-            width: '100%',
-            marginTop: '8px',
-          }}
-        />
+        <div className="quran-search-container">
+          <input
+            type="text"
+            className="quran-search-input"
+            placeholder="Search chapters or verses..."
+            value={searchQuery}
+            onChange={(e) => handleSearch(e.target.value)}
+          />
+        </div>
       </div>
 
       {/* Content */}
-      <div style={{ padding: '20px' }}>
+      <div className="quran-content">
         {viewMode === 'chapters' && (
           <div>
-            <h2 style={{ fontSize: '20px', color: '#E7F5F1', marginBottom: '16px' }}>
+            <h2 className="quran-section-title">
               Chapters ({chapters.length})
             </h2>
-            <div style={{ display: 'grid', gap: '12px' }}>
+            <div className="quran-chapters-grid">
               {chapters.map((chapter) => (
                 <div
                   key={chapter.id}
-                  className="card"
+                  className="quran-chapter-card"
                   onClick={() => handleChapterSelect(chapter.id)}
-                  style={{
-                    cursor: 'pointer',
-                    transition: 'transform 0.2s, box-shadow 0.2s',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
-                  }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '20px',
-                      background: 'linear-gradient(135deg, #11C48D 0%, #00BFA5 100%)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#FFFFFF',
-                      fontWeight: 'bold',
-                      fontSize: '16px',
-                    }}>
-                      {chapter.id}
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <p style={{
-                        fontSize: '16px',
-                        fontWeight: '600',
-                        color: '#E7F5F1',
-                        marginBottom: '4px',
-                      }}>
-                        {chapter.name}
-                      </p>
-                      <p style={{
-                        fontSize: '14px',
-                        color: '#BBE1D5',
-                        textAlign: 'right',
-                        marginBottom: '4px',
-                      }}>
-                        {chapter.nameArabic}
-                      </p>
-                      <p style={{
-                        fontSize: '12px',
-                        color: '#9E9E9E',
-                      }}>
-                        {chapter.verses} verses • {chapter.revelationPlace}
-                      </p>
-                    </div>
-                    <span style={{ fontSize: '20px', color: '#BBE1D5' }}>→</span>
+                  <div className="quran-chapter-number">
+                    {chapter.id}
                   </div>
+                  <div className="quran-chapter-info">
+                    <p className="quran-chapter-name">
+                      {chapter.name}
+                    </p>
+                    <p className="quran-chapter-name-arabic">
+                      {chapter.nameArabic}
+                    </p>
+                    <div className="quran-chapter-meta">
+                      <span>{chapter.verses} verses</span>
+                      <span>•</span>
+                      <span>{chapter.revelationPlace}</span>
+                    </div>
+                  </div>
+                  <span style={{ fontSize: '20px', color: '#BBE1D5' }}>→</span>
                 </div>
               ))}
             </div>
@@ -269,111 +217,57 @@ const QuranScreen: React.FC = () => {
             )}
 
             {isLoadingVerses ? (
-              <div className="flex-center" style={{ padding: '40px' }}>
+              <div className="quran-loading">
                 <div className="spinner"></div>
+                <p>Loading verses...</p>
               </div>
             ) : (
-              <div style={{ display: 'grid', gap: '16px' }}>
+              <div>
                 {verses.map((verse) => {
                   const isBookmarked = bookmarks.has(`${verse.surah}:${verse.verse}`);
                   
                   return (
                     <div
                       key={`${verse.surah}-${verse.verse}`}
-                      className="card"
-                      style={{
-                        padding: '20px',
-                      }}
+                      className="quran-verse-card"
                     >
-                      <div style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'flex-start',
-                        marginBottom: '12px',
-                      }}>
-                        <div style={{
-                          width: '32px',
-                          height: '32px',
-                          borderRadius: '16px',
-                          background: 'linear-gradient(135deg, #11C48D 0%, #00BFA5 100%)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: '#FFFFFF',
-                          fontWeight: 'bold',
-                          fontSize: '14px',
-                        }}>
+                      <div className="quran-verse-header">
+                        <div className="quran-verse-number">
                           {verse.verse}
                         </div>
-                        <div style={{ display: 'flex', gap: '8px' }}>
+                        <div className="quran-verse-actions">
                           <button
                             onClick={() => toggleBookmark(verse.surah, verse.verse)}
-                            style={{
-                              padding: '8px',
-                              background: isBookmarked ? '#FFD54F' : 'rgba(255,255,255,0.1)',
-                              border: 'none',
-                              borderRadius: '8px',
-                              cursor: 'pointer',
-                              fontSize: '18px',
-                            }}
+                            className="quran-action-button"
+                            style={{ background: isBookmarked ? '#FFD54F' : 'rgba(255,255,255,0.1)' }}
                           >
                             {isBookmarked ? '⭐' : '☆'}
                           </button>
                           <button
                             onClick={() => handleShare(verse)}
-                            style={{
-                              padding: '8px',
-                              background: 'rgba(255,255,255,0.1)',
-                              border: 'none',
-                              borderRadius: '8px',
-                              cursor: 'pointer',
-                              fontSize: '18px',
-                            }}
+                            className="quran-action-button"
                           >
                             📤
                           </button>
                           <button
                             onClick={() => handleCopy(verse)}
-                            style={{
-                              padding: '8px',
-                              background: 'rgba(255,255,255,0.1)',
-                              border: 'none',
-                              borderRadius: '8px',
-                              cursor: 'pointer',
-                              fontSize: '18px',
-                            }}
+                            className="quran-action-button"
                           >
                             📋
                           </button>
                         </div>
                       </div>
 
-                      <p style={{
-                        fontSize: '24px',
-                        color: '#E7F5F1',
-                        textAlign: 'right',
-                        lineHeight: '1.8',
-                        marginBottom: '16px',
-                        fontFamily: 'Amiri, "Arabic Typesetting", serif',
-                      }}>
+                      <p className="quran-verse-arabic">
                         {verse.arabic}
                       </p>
 
-                      <p style={{
-                        fontSize: '16px',
-                        color: '#BBE1D5',
-                        lineHeight: '1.6',
-                        marginBottom: '8px',
-                      }}>
+                      <p className="quran-verse-translation">
                         {verse.translation}
                       </p>
 
                       {verse.transliteration && (
-                        <p style={{
-                          fontSize: '14px',
-                          color: '#9E9E9E',
-                          fontStyle: 'italic',
-                        }}>
+                        <p className="quran-verse-transliteration">
                           {verse.transliteration}
                         </p>
                       )}

@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import '../App.css';
+import './DuasScreen.css';
 
 interface Dua {
   id: string;

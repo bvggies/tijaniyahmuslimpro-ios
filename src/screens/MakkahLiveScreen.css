@@ -1,0 +1,134 @@
+.makkah-live-screen {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #052F2A 0%, #0B3F39 50%, #114C45 100%);
+  padding-bottom: 80px;
+}
+
+.makkah-live-header {
+  background: linear-gradient(135deg, #0B3F39 0%, #052F2A 100%);
+  padding: 40px 20px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.makkah-live-header-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #E7F5F1;
+  margin-bottom: 8px;
+}
+
+.makkah-live-header-subtitle {
+  font-size: 14px;
+  color: #BBE1D5;
+}
+
+.makkah-live-content {
+  padding: 20px;
+}
+
+.makkah-live-channel-selector {
+  padding: 20px;
+  padding-bottom: 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.makkah-live-channels {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 8px;
+}
+
+.makkah-live-channel-button {
+  min-width: 200px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.makkah-live-channel-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.makkah-live-channel-button.active {
+  border-color: #11C48D;
+  background: rgba(17, 196, 141, 0.1);
+  box-shadow: 0 4px 12px rgba(17, 196, 141, 0.3);
+}
+
+.makkah-live-channel-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #E7F5F1;
+  margin-bottom: 4px;
+}
+
+.makkah-live-channel-subtitle {
+  font-size: 12px;
+  color: #BBE1D5;
+}
+
+.makkah-live-player-container {
+  margin: 20px;
+  margin-top: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.makkah-live-video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.makkah-live-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.makkah-live-info {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.makkah-live-info-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #E7F5F1;
+  margin-bottom: 12px;
+}
+
+.makkah-live-info-text {
+  font-size: 14px;
+  color: #BBE1D5;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .makkah-live-header-title {
+    font-size: 24px;
+  }
+  
+  .makkah-live-channel-button {
+    min-width: 160px;
+  }
+}
+

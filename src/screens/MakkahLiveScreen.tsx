@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
+import './MakkahLiveScreen.css';
 
 interface Channel {
   id: string;
