@@ -4,6 +4,7 @@
   "devCommand": "npm start",
   "installCommand": "npm install",
   "framework": "create-react-app",
+  "production": true,
   "rewrites": [
     {
       "source": "/(.*)",
@@ -12,6 +13,10 @@
   ],
   "env": {
     "REACT_APP_API_URL": "https://tijaniyahmuslimproappreact-production-1e25.up.railway.app"
+  },
+  "github": {
+    "enabled": true,
+    "autoAlias": true
   }
 }
 
