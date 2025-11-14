@@ -1,11 +1,42 @@
 # Fix Vercel Production Domain Not Showing Latest Updates
 
 ## Problem
-The main production domain `tijaniyahmuslimpro-ios.vercel.app` is not showing the latest updates, while the preview deployment `tijaniyahmuslimpro-ios-git-main-samuels-projects-1cfda609.vercel.app` has the latest updates.
+The main production domain `tijaniyahmuslimpro-ios.vercel.app` is not showing the latest updates, while preview deployments have the latest updates. All 3 domains need to be synchronized.
 
-## Solution
+## Understanding Vercel Domains
 
-### Option 1: Update Production Domain in Vercel Dashboard (Recommended)
+Vercel creates multiple deployment URLs:
+1. **Production Domain**: `tijaniyahmuslimpro-ios.vercel.app` - Main production URL
+2. **Preview Deployments**: `tijaniyahmuslimpro-ios-git-main-*.vercel.app` - Created for each commit
+3. **Branch Deployments**: `tijaniyahmuslimpro-ios-*.vercel.app` - Created for different branches
+
+## Solution: Ensure All Domains Have Latest Updates
+
+### Option 1: Configure Auto-Deployment (Recommended - One-Time Setup)
+
+1. **Go to Vercel Dashboard**
+   - Visit https://vercel.com/dashboard
+   - Select your project: `tijaniyahmuslimpro-ios`
+
+2. **Configure Git Settings**
+   - Click on "Settings" in the left sidebar
+   - Navigate to "Git" section
+   - Ensure "Production Branch" is set to `main`
+   - Enable "Automatic deployments from Git" for the `main` branch
+   - Enable "Auto-assign Production Domain" option
+
+3. **Configure Deployment Settings**
+   - Go to "Settings" → "Deployments"
+   - Enable "Automatic Production Deployments"
+   - This ensures every push to `main` automatically updates the production domain
+
+4. **Verify Auto-Deployment**
+   - After enabling, every push to `main` will automatically:
+     - Create a new deployment
+     - Update the production domain (`tijaniyahmuslimpro-ios.vercel.app`)
+     - All preview domains will also be created with the latest code
+
+### Option 2: Manual Promotion (If Auto-Deployment is Not Enabled)
 
 1. **Go to Vercel Dashboard**
    - Visit https://vercel.com/dashboard
@@ -13,33 +44,21 @@ The main production domain `tijaniyahmuslimpro-ios.vercel.app` is not showing th
 
 2. **Navigate to Deployments**
    - Click on "Deployments" in the left sidebar
-   - Find the latest deployment (should have the commit message: "Enhance and modernize all screens...")
+   - Find the latest deployment (check commit hash: `9600777` or later)
 
 3. **Promote to Production**
    - Click on the three dots (⋯) next to the latest deployment
    - Select "Promote to Production"
    - This will update the production domain to point to the latest deployment
 
-4. **Verify**
-   - Wait a few minutes for the deployment to propagate
-   - Visit `tijaniyahmuslimpro-ios.vercel.app` to verify it shows the latest updates
+4. **Verify All Domains**
+   - Wait 2-3 minutes for propagation
+   - Check all 3 domains:
+     - `tijaniyahmuslimpro-ios.vercel.app` (should show latest)
+     - `tijaniyahmuslimpro-ios-git-main-*.vercel.app` (preview, should show latest)
+     - Any other preview domains (should show latest)
 
-### Option 2: Update Domain Settings
-
-1. **Go to Project Settings**
-   - In your Vercel project, click "Settings"
-   - Navigate to "Domains"
-
-2. **Check Production Domain**
-   - Ensure `tijaniyahmuslimpro-ios.vercel.app` is set as the production domain
-   - If it's pointing to a different deployment, update it
-
-3. **Set Production Branch**
-   - Go to "Git" settings
-   - Ensure "Production Branch" is set to `main`
-   - This ensures all pushes to `main` trigger production deployments
-
-### Option 3: Manual Redeploy
+### Option 3: Force Redeploy All Domains
 
 1. **Trigger New Deployment**
    - Go to "Deployments" tab
@@ -47,9 +66,13 @@ The main production domain `tijaniyahmuslimpro-ios.vercel.app` is not showing th
    - Select "Use existing Build Cache" = No (to ensure fresh build)
    - Click "Redeploy"
 
-2. **Wait for Completion**
+2. **Promote After Redeploy**
+   - Once redeployment completes, promote it to production
+   - This ensures all domains are synchronized
+
+3. **Wait for Completion**
    - Monitor the deployment progress
-   - Once complete, the production domain should update automatically
+   - Once complete, all domains should show the latest updates
 
 ## Verification Steps
 
@@ -70,29 +93,58 @@ After applying the fix:
    - Both domains should show identical content
    - The main domain should match the preview deployment
 
-## Prevention
+## Prevention: Ensure All Domains Stay Synchronized
 
 To prevent this issue in the future:
 
-1. **Ensure Production Branch is Set**
+1. **Enable Auto-Deployment (One-Time Setup)**
    - Settings → Git → Production Branch = `main`
-
-2. **Enable Automatic Deployments**
    - Settings → Git → Automatic deployments from Git = Enabled
+   - Settings → Deployments → Automatic Production Deployments = Enabled
+   - Settings → Deployments → Auto-assign Production Domain = Enabled
+
+2. **Verify After Each Push**
+   - After pushing to `main`, check Vercel dashboard
+   - Ensure a new deployment is created
+   - Verify production domain is automatically updated
+   - All preview domains will automatically have the latest code
 
 3. **Monitor Deployments**
    - Check that each push to `main` creates a production deployment
    - Verify the production domain updates automatically
+   - All preview URLs will show the same latest code
 
 ## Current Status
 
-- ✅ Latest code pushed to `main` branch (commit: `928138f`)
-- ✅ Vercel config updated with production settings
-- ⏳ Waiting for Vercel to deploy and update production domain
+- ✅ Latest code pushed to `main` branch (commit: `9600777`)
+- ✅ Vercel config updated with git deployment settings
+- ✅ Fixed blank page issue - GuestModeScreen now shows as starting page
+- ⏳ Need to enable auto-deployment in Vercel dashboard OR manually promote latest deployment
 
-## Next Steps
+## Next Steps (Choose One)
 
-1. Go to Vercel dashboard and promote the latest deployment to production
-2. Wait 2-3 minutes for propagation
-3. Verify the main domain shows the latest updates
+### Option A: Enable Auto-Deployment (Recommended - One-Time)
+1. Go to Vercel dashboard → Settings → Git
+2. Enable "Automatic deployments from Git" for `main` branch
+3. Go to Settings → Deployments
+4. Enable "Automatic Production Deployments"
+5. Future pushes will automatically update all domains
+
+### Option B: Manual Promotion (Quick Fix)
+1. Go to Vercel dashboard → Deployments
+2. Find latest deployment (commit `9600777`)
+3. Click three dots (⋯) → "Promote to Production"
+4. Wait 2-3 minutes for propagation
+5. Verify all 3 domains show latest updates
+
+## Verification Checklist
+
+After applying the fix, verify all domains:
+
+- [ ] `tijaniyahmuslimpro-ios.vercel.app` shows latest updates
+- [ ] Preview deployment shows latest updates
+- [ ] All domains show the same version (check commit hash in footer or console)
+- [ ] Splash screen appears on all domains
+- [ ] GuestModeScreen shows as starting page when not authenticated
+- [ ] All features work correctly on all domains
 
