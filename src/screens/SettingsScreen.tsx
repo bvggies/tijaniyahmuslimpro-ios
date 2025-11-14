@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useLanguage } from '../contexts/LanguageContext';
+import LanguageSelector from '../components/LanguageSelector';
 import '../App.css';
 import './SettingsScreen.css';
 
@@ -9,7 +11,6 @@ interface Settings {
   prayerNotifications: boolean;
   darkMode: boolean;
   timeFormat: '12h' | '24h';
-  language: string;
   locationServices: boolean;
   autoLocation: boolean;
 }
@@ -17,12 +18,12 @@ interface Settings {
 const SettingsScreen: React.FC = () => {
   const navigate = useNavigate();
   const { logout } = useAuth();
+  const { t } = useLanguage();
   const [settings, setSettings] = useState<Settings>({
     notifications: true,
     prayerNotifications: true,
     darkMode: false,
     timeFormat: '12h',
-    language: 'en',
     locationServices: true,
     autoLocation: true,
   });
@@ -58,32 +59,31 @@ const SettingsScreen: React.FC = () => {
   };
 
   const clearCache = () => {
-    if (window.confirm('This will clear all cached data. Continue?')) {
+    if (window.confirm(t('settings.clear_cache_confirm') || 'This will clear all cached data. Continue?')) {
       // Clear specific cache items
       localStorage.removeItem('journal_entries_v2');
       localStorage.removeItem('prayer_times_cache');
-      alert('Cache cleared successfully!');
+      alert(t('settings.cache_cleared') || 'Cache cleared successfully!');
     }
   };
 
   const resetSettings = () => {
-    if (window.confirm('This will reset all settings to default. Continue?')) {
+    if (window.confirm(t('settings.reset_confirm') || 'This will reset all settings to default. Continue?')) {
       const defaultSettings: Settings = {
         notifications: true,
         prayerNotifications: true,
         darkMode: false,
         timeFormat: '12h',
-        language: 'en',
         locationServices: true,
         autoLocation: true,
       };
       saveSettings(defaultSettings);
-      alert('Settings reset to default!');
+      alert(t('settings.reset_success') || 'Settings reset to default!');
     }
   };
 
   const handleLogout = () => {
-    if (window.confirm('Are you sure you want to logout?')) {
+    if (window.confirm(t('profile.are_you_sure_logout') || 'Are you sure you want to logout?')) {
       logout();
       navigate('/login');
     }
@@ -114,13 +114,13 @@ const SettingsScreen: React.FC = () => {
             gap: '8px',
           }}
         >
-          ← Back
+          ← {t('common.back')}
         </button>
         <h1 style={{ fontSize: '28px', fontWeight: 'bold', color: '#E7F5F1', marginBottom: '8px' }}>
-          ⚙️ Settings
+          ⚙️ {t('common.settings')}
         </h1>
         <p style={{ fontSize: '14px', color: '#BBE1D5' }}>
-          Manage your app preferences
+          {t('settings.manage_preferences') || 'Manage your app preferences'}
         </p>
       </div>
 
@@ -133,7 +133,7 @@ const SettingsScreen: React.FC = () => {
             color: '#E7F5F1',
             marginBottom: '16px',
           }}>
-            🔔 Notifications
+            🔔 {t('settings.notifications')}
           </h2>
 
           <div style={{
@@ -240,7 +240,7 @@ const SettingsScreen: React.FC = () => {
             color: '#E7F5F1',
             marginBottom: '16px',
           }}>
-            🎨 Display & Language
+            🎨 {t('settings.display_language') || 'Display & Language'}
           </h2>
 
           <div style={{ marginBottom: '16px' }}>
@@ -281,18 +281,9 @@ const SettingsScreen: React.FC = () => {
 
           <div>
             <p style={{ fontSize: '14px', color: '#BBE1D5', marginBottom: '8px' }}>
-              Language
+              {t('common.language')}
             </p>
-            <select
-              value={settings.language}
-              onChange={(e) => updateSetting('language', e.target.value)}
-              className="input-field"
-            >
-              <option value="en">English</option>
-              <option value="ar">العربية (Arabic)</option>
-              <option value="fr">Français (French)</option>
-              <option value="ha">Hausa</option>
-            </select>
+            <LanguageSelector />
           </div>
         </div>
 
@@ -304,7 +295,7 @@ const SettingsScreen: React.FC = () => {
             color: '#E7F5F1',
             marginBottom: '16px',
           }}>
-            📍 Location Services
+            📍 {t('settings.location_services') || 'Location Services'}
           </h2>
 
           <div style={{
@@ -411,7 +402,7 @@ const SettingsScreen: React.FC = () => {
             color: '#E7F5F1',
             marginBottom: '16px',
           }}>
-            💾 Data Management
+            💾 {t('settings.data_management') || 'Data Management'}
           </h2>
 
           <button
@@ -462,7 +453,7 @@ const SettingsScreen: React.FC = () => {
             color: '#E7F5F1',
             marginBottom: '16px',
           }}>
-            ℹ️ App Information
+            ℹ️ {t('settings.about')}
           </h2>
 
           <div style={{
@@ -471,7 +462,7 @@ const SettingsScreen: React.FC = () => {
             alignItems: 'center',
             marginBottom: '12px',
           }}>
-            <span style={{ fontSize: '14px', color: '#BBE1D5' }}>Version</span>
+            <span style={{ fontSize: '14px', color: '#BBE1D5' }}>{t('settings.version')}</span>
             <span style={{ fontSize: '14px', color: '#E7F5F1', fontWeight: '500' }}>1.0.0</span>
           </div>
 
@@ -551,7 +542,7 @@ const SettingsScreen: React.FC = () => {
             marginTop: '20px',
           }}
         >
-          🚪 Logout
+          🚪 {t('profile.logout')}
         </button>
       </div>
     </div>

@@ -1,21 +1,3 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-
-export type Language = 'en' | 'fr' | 'ar' | 'ha';
-
-export interface LanguageContextType {
-  language: Language;
-  setLanguage: (language: Language) => void;
-  t: (key: string) => string;
-  isRTL: boolean;
-}
-
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-interface LanguageProviderProps {
-  children: ReactNode;
-}
-
-// Translation data
 const translations = {
   en: {
     // Navigation
@@ -517,14 +499,6 @@ const translations = {
     'settings.privacy': 'Privacy',
     'settings.about': 'About',
     'settings.version': 'Version',
-    'settings.display_language': 'Display & Language',
-    'settings.location_services': 'Location Services',
-    'settings.data_management': 'Data Management',
-    'settings.manage_preferences': 'Manage your app preferences',
-    'settings.clear_cache_confirm': 'This will clear all cached data. Continue?',
-    'settings.cache_cleared': 'Cache cleared successfully!',
-    'settings.reset_confirm': 'This will reset all settings to default. Continue?',
-    'settings.reset_success': 'Settings reset to default!',
     
     // Language Options
     'language.english': 'English',
@@ -1033,14 +1007,6 @@ const translations = {
     'settings.privacy': 'Confidentialité',
     'settings.about': 'À propos',
     'settings.version': 'Version',
-    'settings.display_language': 'Affichage et Langue',
-    'settings.location_services': 'Services de Localisation',
-    'settings.data_management': 'Gestion des Données',
-    'settings.manage_preferences': 'Gérez vos préférences d\'application',
-    'settings.clear_cache_confirm': 'Cela effacera toutes les données en cache. Continuer?',
-    'settings.cache_cleared': 'Cache effacé avec succès!',
-    'settings.reset_confirm': 'Cela réinitialisera tous les paramètres par défaut. Continuer?',
-    'settings.reset_success': 'Paramètres réinitialisés par défaut!',
     
     // Language Options
     'language.english': 'English',
@@ -1549,14 +1515,6 @@ const translations = {
     'settings.privacy': 'Keɓewa',
     'settings.about': 'Game da',
     'settings.version': 'Sigar',
-    'settings.display_language': 'Nunawa & Harshe',
-    'settings.location_services': 'Sabis na Wuri',
-    'settings.data_management': 'Sarrafa Bayanai',
-    'settings.manage_preferences': 'Sarrafa zaɓuɓɓukan app ɗinku',
-    'settings.clear_cache_confirm': 'Wannan zai share duk bayanan cache. Ci gaba?',
-    'settings.cache_cleared': 'An share cache cikin nasara!',
-    'settings.reset_confirm': 'Wannan zai sake saita duk saituna zuwa na asali. Ci gaba?',
-    'settings.reset_success': 'An sake saita saituna zuwa na asali!',
     
     // Language Options
     'language.english': 'English',
@@ -1799,14 +1757,6 @@ const translations = {
     'settings.privacy': 'الخصوصية',
     'settings.about': 'حول',
     'settings.version': 'الإصدار',
-    'settings.display_language': 'العرض واللغة',
-    'settings.location_services': 'خدمات الموقع',
-    'settings.data_management': 'إدارة البيانات',
-    'settings.manage_preferences': 'إدارة تفضيلات التطبيق',
-    'settings.clear_cache_confirm': 'سيؤدي هذا إلى مسح جميع البيانات المخزنة مؤقتاً. متابعة?',
-    'settings.cache_cleared': 'تم مسح الذاكرة المؤقتة بنجاح!',
-    'settings.reset_confirm': 'سيؤدي هذا إلى إعادة تعيين جميع الإعدادات إلى الافتراضي. متابعة?',
-    'settings.reset_success': 'تم إعادة تعيين الإعدادات إلى الافتراضي!',
     
     // Language Options
     'language.english': 'English',
@@ -1814,52 +1764,136 @@ const translations = {
     'language.arabic': 'العربية',
     'language.hausa': 'Hausa',
   },
-};
-
-export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>('en');
-
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('tijaniyah_language') as Language;
-    if (savedLanguage && ['en', 'fr', 'ar', 'ha'].includes(savedLanguage)) {
-      setLanguageState(savedLanguage);
-      updateDocumentDirection(savedLanguage);
-    } else {
-      updateDocumentDirection('en');
-    }
-  }, []);
-
-  const updateDocumentDirection = (lang: Language) => {
-    if (typeof document !== 'undefined') {
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-      document.documentElement.lang = lang;
-    }
-  };
-
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem('tijaniyah_language', lang);
-    updateDocumentDirection(lang);
-  };
-
-  const t = (key: string): string => {
-    const langTranslations = translations[language] as Record<string, string>;
-    return langTranslations[key] || key;
-  };
-
-  const isRTL = language === 'ar';
-
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, isRTL }}>
-      {children}
-    </LanguageContext.Provider>
-  );
-};
-
-export const useLanguage = (): LanguageContextType => {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
+  
+  ha: {
+    // Navigation
+    'nav.home': 'Gida',
+    'nav.tijaniyah_features': 'Fasali na Tijaniyah',
+    'nav.qibla': 'Qibla',
+    'nav.quran': 'Alkurani',
+    'nav.duas': 'Adduoi',
+    'nav.more': 'Kara',
+    
+    // Common
+    'common.loading': 'Ana loda...',
+    'common.error': 'Kuskure',
+    'common.success': 'Nasara',
+    'common.cancel': 'Soke',
+    'common.save': 'Ajiye',
+    'common.delete': 'Share',
+    'common.edit': 'Gyara',
+    'common.search': 'Nemo',
+    'common.settings': 'Saituna',
+    'common.language': 'Harshe',
+    'common.back': 'Koma baya',
+    'common.next': 'Na gaba',
+    'common.previous': 'Na baya',
+    
+    // Home Screen
+    'home.welcome': 'Barka da zuwa Tijaniyah Pro',
+    'home.prayer_times': 'Lokutan Salla',
+    'home.qibla_direction': 'Shugaban Qibla',
+    'home.quran_reading': 'Karatun Alkurani',
+    'home.duas': 'Adduoi da Rooi',
+    'home.tasbih': 'Tasbih na Lantarki',
+    'home.lessons': 'Darussan Musulunci',
+    'home.community': 'Alumma',
+    'home.quick_actions': 'Ayyuka na Gaggawa',
+    'home.upcoming_events': 'Abubuwan da ke Zuwa',
+    'home.islamic_calendar': 'Kalandar Musulunci',
+    'home.current_prayer': 'Sallar Yanzu',
+    'home.upcoming': 'Mai Zuwa',
+    'home.in': 'A cikin',
+    
+    // Tijaniyah Features
+    'tijaniyah.title': 'Fasalolin Tijaniyya',
+    'tijaniyah.tariqa': 'Tariqa Tijaniyya',
+    'tijaniyah.tariqa_desc': 'Koyi game da hanyar Tijaniyya',
+    'tijaniyah.fiqh': 'Fiqhun Tijaniyya',
+    'tijaniyah.fiqh_desc': 'Fahimtar dokokin Tijaniyya',
+    'tijaniyah.lazim': 'Lazim na Tijaniyya',
+    'tijaniyah.lazim_desc': 'Addu’o’in wajibai',
+    'tijaniyah.wazifa': 'Wazifa',
+    'tijaniyah.wazifa_desc': 'Aikin Wazifa na yau da kullum',
+    'tijaniyah.haylala': 'Haylala',
+    'tijaniyah.haylala_desc': 'Dhikrin Juma’a',
+    'tijaniyah.azan': 'Azani',
+    'tijaniyah.azan_desc': 'Kiran salla',
+    'tijaniyah.scholars': 'Malamai',
+    'tijaniyah.scholars_desc': 'Malamai na Tijaniyya da tarihin rayuwa',
+    
+    // Scholars
+    'scholars.title': 'Malamai na Tijaniyya',
+    'scholars.subtitle': 'Koyi game da manyan malamai na Tariqa Tijaniyya',
+    'scholars.search_placeholder': 'Nemo malamai...',
+    'scholar_detail.biography': 'Tarihin Rayuwa',
+    'scholar_detail.details': 'Cikakkun bayanai',
+    
+    // Donate
+    'donate.title': 'Ba da gudummawa',
+    'donate.subtitle': 'Tallafa wa Tijaniyah Pro App',
+    'donate.mtn_mobile': 'MTN Mobile Money',
+    'donate.airtel_tigo': 'Airtel/Tigo Money',
+    'donate.reference': 'Madaidaici',
+    'donate.thank_you': 'Mun gode da tallafinka!',
+    
+    // More Features
+    'more.title': 'Ƙarin Fasali',
+    'more.search_placeholder': 'Nemo fasali, salloli, adduoi...',
+    'more.search_results': 'Sakamakon Bincike',
+    'more.search_with_ai': 'Bincike tare da AI Noor',
+    'more.ai_search_subtitle': 'Tambayi AI Noor don amsoshin tambayoyin ku',
+    'more.ask_ai_noor': 'Tambayi AI Noor',
+    
+    // Makkah Live
+    'makkah_live.title': 'Makkah Kai Tsaye',
+    'makkah_live.subtitle': 'Watsa kai tsaye daga Masallatai Masu Tsarki',
+    'makkah_live.help_title': 'Watsa Ba Ya Aiki?',
+    'makkah_live.help_description': 'Idan watsa na yanzu ba ya loading ko yana da matsala, gwada canzawa zuwa wani watsa a ƙasa. Watsa daban-daban na iya aiki da kyau dangane da haɗin intanet ɗin ku.',
+    'makkah_live.open_youtube': 'Buɗe a YouTube',
+    'makkah_live.loading': 'Ana loading watsa kai tsaye...',
+    'makkah_live.tv_channels': 'Gidajen Talabijin na Musulunci & Alkur\'ani',
+    'makkah_live.tv_channels_subtitle': 'Ziyarci shafukan hukuma don kallon kai tsaye',
+    'makkah_live.category_quran': 'Alkur\'ani',
+    'makkah_live.category_islamic': 'Musulunci',
+    'makkah_live.category_news': 'Labarai',
+    'makkah_live.category_educational': 'Ilimi',
+    
+    // Prayer Times
+    'prayer.fajr': 'Fajr',
+    'prayer.dhuhr': 'Dhuhr',
+    'prayer.asr': 'Asr',
+    'prayer.maghrib': 'Maghrib',
+    'prayer.isha': 'Isha',
+    'prayer.next_prayer': 'Sallar da ke zuwa',
+    'prayer.time_remaining': 'Lokaci da ya rage',
+    
+    // AI Noor
+    'ai_noor.title': 'AI Noor',
+    'ai_noor.subtitle': 'Yi tambayoyi na Musulunci tare da jagora mai taushi da taimako',
+    'ai_noor.placeholder': 'Tambayi game da Musulunci, salla, Alkurani, Tijaniyya...',
+    'ai_noor.thinking': 'AI Noor yana tunani...',
+    
+    // Azan
+    'azan.title': 'Azani',
+    'azan.subtitle': 'Kiran salla',
+    'azan.select_muezzin': 'Zaɓi mai kiran salla',
+    
+    // Wazifa
+    'wazifa.title': 'Wazifa',
+    'wazifa.subtitle': 'Aikin Ruhaniya na Yau da Kullum',
+    
+    // Settings
+    'settings.language': 'Harshe',
+    'settings.notifications': 'Sanarwa',
+    'settings.privacy': 'Kebantawa',
+    'settings.about': 'Game da',
+    'settings.version': 'Sigar',
+    
+    // Language Options
+    'language.english': 'English',
+    'language.french': 'Français',
+    'language.arabic': 'العربية',
+    'language.hausa': 'Hausa',
+  },
 };

@@ -8,13 +8,14 @@ import LocationService, { LocationData } from '../services/locationService';
 import { getCurrentIslamicDate, getUpcomingIslamicEvents } from '../services/islamicCalendarService';
 import { getDailyReminder, getCategoryIcon, DailyReminder } from '../services/dailyReminderService';
 import ProfileAvatar from '../components/ProfileAvatar';
+import LanguageSelector from '../components/LanguageSelector';
 import { colors } from '../utils/theme';
 import './HomeScreen.css';
 
 const HomeScreen: React.FC = () => {
   const navigate = useNavigate();
   const { authState } = useAuth();
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const { timeFormat, formatTimeWithSeconds } = useTimeFormat();
   const [prayerTimes, setPrayerTimes] = useState<PrayerTime[]>([]);
   const [currentLocation, setCurrentLocation] = useState<LocationData | null>(null);
@@ -238,7 +239,7 @@ const HomeScreen: React.FC = () => {
           <div className="home-header-actions">
             <button className="home-header-button" onClick={() => navigate('/donate')}>
               <span className="home-header-icon">❤️</span>
-              <span className="home-header-label">Donate</span>
+              <span className="home-header-label">{t('donate.title')}</span>
             </button>
             
             <div className="home-header-button" onClick={() => navigate('/profile')}>
@@ -250,12 +251,14 @@ const HomeScreen: React.FC = () => {
                   showBorder={false}
                 />
               </div>
-              <span className="home-header-label">Profile</span>
+              <span className="home-header-label">{t('profile.title')}</span>
             </div>
+            
+            <LanguageSelector compact={true} />
             
             <button className="home-header-button" onClick={() => navigate('/settings')}>
               <span className="home-header-icon">⚙️</span>
-              <span className="home-header-label">Settings</span>
+              <span className="home-header-label">{t('common.settings')}</span>
             </button>
           </div>
         </div>

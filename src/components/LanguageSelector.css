@@ -1,0 +1,249 @@
+.language-selector-container {
+  margin: 8px 0;
+}
+
+.language-selector-compact {
+  margin: 0;
+}
+
+.language-selector-compact-button {
+  padding: 10px 12px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-selector-compact-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+.language-selector-compact-flag {
+  font-size: 20px;
+}
+
+.language-selector-button {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-selector-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.language-selector-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.language-selector-flag {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.language-selector-text {
+  flex: 1;
+  text-align: left;
+}
+
+.language-selector-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.language-selector-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.language-selector-chevron {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+.language-selector-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.language-selector-modal {
+  background: linear-gradient(180deg, #052F2A 0%, #0B3F39 50%, #114C45 100%);
+  width: 100%;
+  max-width: 500px;
+  max-height: 80vh;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.language-selector-modal.rtl {
+  direction: rtl;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.language-selector-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.language-selector-close-button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.language-selector-close-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.language-selector-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.language-selector-placeholder {
+  width: 40px;
+}
+
+.language-selector-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.language-selector-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 12px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.language-selector-option:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.language-selector-option.selected {
+  background: rgba(11, 191, 131, 0.2);
+}
+
+.language-selector-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.language-selector-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.language-selector-name.selected {
+  color: #0BBF83;
+}
+
+.language-selector-code {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.language-selector-code.selected {
+  color: #0BBF83;
+}
+
+.language-selector-check {
+  color: #0BBF83;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* RTL Support */
+.language-selector-modal.rtl .language-selector-text {
+  text-align: right;
+}
+
+.language-selector-modal.rtl .language-selector-option {
+  text-align: right;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .language-selector-modal {
+    border-radius: 20px;
+    max-height: 70vh;
+    margin: auto;
+  }
+}
+
