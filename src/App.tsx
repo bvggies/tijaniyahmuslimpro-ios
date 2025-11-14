@@ -59,7 +59,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
   }
   
   if (!authState.isAuthenticated && !authState.isGuest) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/guest" replace />;
   }
   
   return <>{children}</>;
@@ -84,13 +84,28 @@ const GuestRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 // Main App Routes
 const AppRoutes: React.FC = () => {
+  const { authState } = useAuth();
+  
   return (
     <>
         <Routes>
           <Route path="/login" element={<GuestRoute><LoginScreen /></GuestRoute>} />
           <Route path="/register" element={<GuestRoute><RegisterScreen /></GuestRoute>} />
           <Route path="/guest" element={<GuestModeScreen />} />
-      <Route path="/" element={<ProtectedRoute><HomeScreen /></ProtectedRoute>} />
+          <Route 
+            path="/" 
+            element={
+              authState.isLoading ? (
+                <div className="flex-center" style={{ minHeight: '100vh' }}>
+                  <div className="spinner"></div>
+                </div>
+              ) : authState.isAuthenticated || authState.isGuest ? (
+                <ProtectedRoute><HomeScreen /></ProtectedRoute>
+              ) : (
+                <Navigate to="/guest" replace />
+              )
+            } 
+          />
       <Route path="/prayer-times" element={<ProtectedRoute><PrayerTimesScreen /></ProtectedRoute>} />
       <Route path="/qibla" element={<ProtectedRoute><QiblaScreen /></ProtectedRoute>} />
       <Route path="/quran" element={<ProtectedRoute><QuranScreen /></ProtectedRoute>} />

@@ -16,6 +16,7 @@
 .splash-screen.splash-fade-out {
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 
 .splash-container {
